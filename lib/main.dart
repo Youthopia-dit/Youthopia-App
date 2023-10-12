@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/screens/login_screen.dart';
+import 'package:youthopia/screens/college_screen.dart';
+import 'package:youthopia/screens/splash_screen.dart';
 
 void main() {
   runApp(const MyApp());
