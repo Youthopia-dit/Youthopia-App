@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/screens/login_screen.dart';
 import 'package:youthopia/screens/college_screen.dart';
 import 'package:youthopia/screens/splash_screen.dart';
 import 'package:youthopia/screens/test_screen.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: TestScreens(),
+
+      home: LoginScreen(),
     );
   }
 }
