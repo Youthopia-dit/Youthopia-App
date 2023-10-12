@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/screens/empty_screen.dart';
 
 import 'Registered_event.dart';
 
