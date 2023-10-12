@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -14,8 +15,7 @@ class SplashScreen extends StatelessWidget {
             fit: BoxFit.fill,
           ),
         ),
-        child: Column(
-            children: <Widget>[
+        child: Column(children: <Widget>[
           Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -29,6 +29,18 @@ class SplashScreen extends StatelessWidget {
               children: <Widget>[
                 Image.asset('Assets/Group 6623.png'),
               ]).paddingForOnly(top: 50),
+          Text(
+            'Loading...',
+
+            style: TextStyle(fontWeight: FontWeight.bold,
+            color: CustomColors.white,
+            fontSize: 24),
+          ).paddingForOnly(top: 30),
+          Expanded(
+              child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: Image.asset('Assets/youthopia 2022 white small 1.png')
+                      .paddingForOnly(bottom: 30))),
         ]),
       ),
     );
