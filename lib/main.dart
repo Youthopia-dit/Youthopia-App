@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/Screens/BottomNavbar.dart';
 import 'package:youthopia/screens/splash_screen.dart';
 
 void main() {
@@ -10,8 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: SplashScreen()
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
+      ),
+      home: BottomNavbar(),
     );
   }
 }
