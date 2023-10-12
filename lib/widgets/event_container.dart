@@ -3,8 +3,10 @@ import 'package:youthopia/utils/widget_extensions.dart';
 
 import '../utils/colors.dart';
 class EventContainer extends StatelessWidget {
-  const EventContainer({super.key});
-
+  const EventContainer({super.key,required this.nameOfEvent,required this.time,required this.venue});
+final String nameOfEvent;
+final String time;
+final String venue;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -21,18 +23,18 @@ class EventContainer extends StatelessWidget {
               children: [
                 //text
                 Text(
-                  "Name of the Event",
+                  nameOfEvent,
                   style: TextStyle(
                       fontSize: 25, color: Colors.white),
                 ),
                 Text(
-                  "Time:10:00am",
+                  "Time:${time}",
                   style: TextStyle(
                       fontSize: 18,
                       color: CustomColors.Grey1),
                 ),
                 Text(
-                  "Venue:Hall",
+                  "Venue:${venue}",
                   style: TextStyle(
                       fontSize: 18,
                       // textAlign:TextAlign.left,
