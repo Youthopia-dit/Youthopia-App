@@ -11,37 +11,41 @@ class SplashScreen extends StatelessWidget {
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
-            image: AssetImage('Assets/image 89.png'),
-            fit: BoxFit.fill,
-          ),
+              image: AssetImage('Assets/background_image.png'),
+              fit: BoxFit.fill,
+              colorFilter: ColorFilter.mode(
+                  CustomColors.black.withOpacity(.5), BlendMode.darken)),
         ),
-        child: Column(children: <Widget>[
-          Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Image.asset('Assets/naac.png'),
-                Image.asset('Assets/DIT LOGO WHITE.png'),
-                Image.asset('Assets/25_years_logo.png'),
-              ]).paddingForOnly(top: 30),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                Image.asset('Assets/Group 6623.png'),
-              ]).paddingForOnly(top: 50),
-          Text(
-            'Loading...',
-
-            style: TextStyle(fontWeight: FontWeight.bold,
-            color: CustomColors.white,
-            fontSize: 24),
-          ).paddingForOnly(top: 30),
-          Expanded(
-              child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: Image.asset('Assets/youthopia 2022 white small 1.png')
-                      .paddingForOnly(bottom: 30))),
-        ]),
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: <Widget>[
+                    Image.asset('Assets/naac.png'),
+                    Image.asset('Assets/DIT LOGO WHITE.png'),
+                    Image.asset('Assets/25_years_logo.png'),
+                  ]).paddingForOnly(top: 30),
+              Column(
+                children: [
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Image.asset('Assets/Group 6623.png'),
+                      ]).paddingForOnly(top: 50),
+                  const Text(
+                    'Loading...',
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        color: CustomColors.white,
+                        fontSize: 24),
+                  ).paddingForOnly(top: 30),
+                ],
+              ),
+              Image.asset('Assets/youthopia_white_flower.png')
+                  .paddingForOnly(bottom: 30)
+            ]),
       ),
     );
   }

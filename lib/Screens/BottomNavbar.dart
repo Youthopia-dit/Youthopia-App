@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:youthopia/Screens/hello.dart'; // Import your screen widget here
 
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({Key? key}) : super(key: key);
@@ -12,10 +11,10 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
   bool isProcessing = true;
   int _selectedIndex = 0;
   static final List<Widget> _list = <Widget>[
-    HelloApp(),
-    HelloApp(),
-    HelloApp(),
-    HelloApp(),
+    Placeholder(),
+    Placeholder(),
+    Placeholder(),
+    Placeholder()
   ];
 
   void _onItemTapped(int index) {
