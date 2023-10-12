@@ -17,6 +17,7 @@ class SplashScreen extends StatelessWidget {
                 Image.asset('Assets/naac.png'),
                 Image.asset('Assets/DIT LOGO WHITE.png'),
                 Image.asset('Assets/25_years_logo.png'),
+
               ]).paddingForOnly(top: 30),
           Column(
             children: [
@@ -38,5 +39,6 @@ class SplashScreen extends StatelessWidget {
           Image.asset('Assets/youthopia_white_flower.png')
               .paddingForOnly(bottom: 30)
         ]));
+// >>>>>>> 20ca2cf6ec521e5dfe1572954f4076764cec5b12
   }
 }
