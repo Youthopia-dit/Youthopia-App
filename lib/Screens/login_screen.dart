@@ -40,12 +40,12 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Text(
                       'Email',
-                      style: TextStyle(color: CustomColors.white, fontSize: 20),
+                      style: TextStyle(color: CustomColors.white, fontSize: 15),
                     ).paddingForOnly(top: 20),
                     TextFormField(),
                     Text(
                       'Password',
-                      style: TextStyle(color: CustomColors.white, fontSize: 20),
+                      style: TextStyle(color: CustomColors.white, fontSize: 15),
                     ).paddingForOnly(top: 20),
                     TextFormField(),
                     TextButton(
