@@ -4,7 +4,6 @@ import 'package:youthopia/screens/splash_screen.dart';
 import 'package:youthopia/screens/Registered_event.dart';
 import 'package:youthopia/screens/login_screen.dart';
 import 'package:youthopia/screens/college_screen.dart';
-import 'package:youthopia/screens/splash_screen.dart';
 import 'package:youthopia/screens/test_screen.dart';
 import 'package:youthopia/widgets/empty_events.dart';
 
