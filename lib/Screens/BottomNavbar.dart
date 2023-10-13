@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/screens/empty_screen.dart';
+
+import 'Registered_event.dart';
 
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({Key? key}) : super(key: key);
@@ -12,7 +15,7 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
   int _selectedIndex = 0;
   static final List<Widget> _list = <Widget>[
     Placeholder(),
-    Placeholder(),
+    Registered_event(),
     Placeholder(),
     Placeholder()
   ];
