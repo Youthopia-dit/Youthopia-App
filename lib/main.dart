@@ -6,6 +6,7 @@ import 'package:youthopia/screens/Registered_event.dart';
 import 'package:youthopia/screens/login_screen.dart';
 import 'package:youthopia/screens/college_screen.dart';
 import 'package:youthopia/screens/test_screen.dart';
+import 'package:youthopia/screens/ticket_screen.dart';
 import 'package:youthopia/widgets/empty_events.dart';
 
 void main() {
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SignUpPage(),
+      home: SplashScreen(),
     );
   }
 }
