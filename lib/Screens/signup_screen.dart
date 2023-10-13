@@ -33,18 +33,24 @@ class SignUpPage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(28))),
               ),
               SizedBox(height: 10),
-              TextFormField(
-                decoration: InputDecoration(
-                    hintText: 'Email',
-                    fillColor: Colors.white,
-                    focusedBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderSide: BorderSide(color: Colors.white),
-                    ),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10))),
+              Center(
+                child: Container(
+                  width: 209.0, // Set the width to 209
+                  height: 36.0, // Set the height to 36
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                        hintText: 'Email',
+                        fillColor: Colors.white,
+                        focusedBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        enabledBorder: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.white),
+                        ),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(28))),
+                  ),
+                ),
               ),
             ],
           ),
@@ -88,8 +94,28 @@ class SignupHeading extends StatelessWidget {
                 ),
                 Expanded(
                   child: Container(
-                    color: Colors.blue, // Color of the second container
-                  ),
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 16.0),
+                        child: Text(
+                          'Personal',
+                          style: TextStyle(
+                              color: Colors.white), // Text color white
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(right: 16.0),
+                        child: Text(
+                          'University',
+                          style: TextStyle(
+                              color: Colors.white), // Text color white
+                        ),
+                      ),
+                    ],
+                  ) // Color of the second container
+                      ),
                 ),
               ],
             ),
