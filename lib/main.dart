@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/Screens/signup_screen.dart';
 import 'package:youthopia/screens/BottomNavbar.dart';
+import 'package:youthopia/screens/aboutus.dart';
 import 'package:youthopia/screens/splash_screen.dart';
 import 'package:youthopia/screens/Registered_event.dart';
 import 'package:youthopia/screens/login_screen.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SplashScreen(),
+      home: Aboutus(),
     );
   }
 }
