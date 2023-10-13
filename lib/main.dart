@@ -22,8 +22,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-
-      home: TicketScreen(),
+      home: TicketScreen(
+          event: 'robosoccer',
+          venue: 'chanakya',
+          id: 'ab100',
+          date: '03/11/2023'),
     );
   }
 }
