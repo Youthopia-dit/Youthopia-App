@@ -39,6 +39,6 @@ class SplashScreen extends StatelessWidget {
           Image.asset('Assets/youthopia_white_flower.png')
               .paddingForOnly(bottom: 30)
         ]));
-// >>>>>>> 20ca2cf6ec521e5dfe1572954f4076764cec5b12
+
   }
 }
