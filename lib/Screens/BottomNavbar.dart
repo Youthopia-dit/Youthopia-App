@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:youthopia/screens/empty_screen.dart';
-
 import 'Registered_event.dart';
-
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({Key? key}) : super(key: key);
 
@@ -50,9 +47,8 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
             : _list.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.grey,
+        selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.grey,
-       
         items: const [
           
           BottomNavigationBarItem(
@@ -63,15 +59,17 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
           BottomNavigationBarItem(
             icon: Icon(Icons.event_available_rounded),
             label: 'Event',
+            backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.event_sharp),
             label: 'Registered Events',
+            backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person_pin),
             label: 'My Profile',
-            
+            backgroundColor: Colors.black,
           ),
         ],
         currentIndex: _selectedIndex,
