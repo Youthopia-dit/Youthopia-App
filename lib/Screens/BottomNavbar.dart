@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/widgets/background_scaffold.dart';
 import 'Registered_event.dart';
+
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({Key? key}) : super(key: key);
-
   @override
   State<BottomNavbar> createState() => _CustomBottomNavigationBarState();
 }
@@ -11,7 +12,7 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
   bool isProcessing = true;
   int _selectedIndex = 0;
   static final List<Widget> _list = <Widget>[
-    Placeholder(),
+    BackgroundScaffold(child: Container()),
     Registered_event(),
     Placeholder(),
     Placeholder()

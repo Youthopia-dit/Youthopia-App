@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
-
 import '../utils/colors.dart';
+
 class EventContainer extends StatelessWidget {
   const EventContainer({super.key,required this.nameOfEvent,required this.time,required this.venue});
 final String nameOfEvent;
@@ -52,8 +52,6 @@ final String venue;
                     height: 80,
                     width: 110,
                     fit: BoxFit.cover,
-
-
                   ),
                 )
               ],
