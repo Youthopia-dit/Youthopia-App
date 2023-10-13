@@ -7,6 +7,7 @@ class SplashScreen extends StatelessWidget {
   const SplashScreen({super.key});
 
   @override
+  
   Widget build(BuildContext context) {
     return BackgroundScaffold(child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
