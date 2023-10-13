@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
-import 'package:youthopia/widgets/rectangle%20black.dart';
+import 'package:youthopia/widgets/rectangle_black.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});

@@ -12,7 +12,6 @@ class InkWellRectangle extends StatelessWidget {
     return InkWell(
       onTap: () {
         // Handle tap event
-        print('Rectangle tapped!');
       },
       child: Container(
         width: 308.0,
