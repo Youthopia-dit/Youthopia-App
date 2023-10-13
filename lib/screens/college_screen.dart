@@ -52,16 +52,7 @@ class CollegeScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(18.0),
               )),
 
-          // style:
-          //
-          // ButtonStyle(
-          //       shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          //           RoundedRectangleBorder(
-          //               borderRadius: BorderRadius.circular(18.0),
-          //               side: BorderSide(color: Colors.white),
-          //           ),
-          //       ),
-          //   ),
+
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
             Text(
               'DIT Student',
