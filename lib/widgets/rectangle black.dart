@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/utils/colors.dart';
 
+//import
 class InkWellRectangle extends StatelessWidget {
   final Widget child;
 
@@ -25,9 +26,3 @@ class InkWellRectangle extends StatelessWidget {
     );
   }
 }
-
-
-
-
-
-
