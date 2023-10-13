@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/screens/Live_Event_Screen.dart';
 import 'package:youthopia/screens/login_screen.dart';
 import 'package:youthopia/screens/college_screen.dart';
 import 'package:youthopia/screens/splash_screen.dart';
@@ -12,6 +13,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: SplashScreen());
+    return MaterialApp(home: LiveEventScreen());
   }
 }
