@@ -3,6 +3,7 @@ import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/about_container.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
+import 'package:youthopia/widgets/youthopia_appbar.dart';
 
 class AboutUsScreen extends StatelessWidget {
   const AboutUsScreen({super.key});
@@ -16,9 +17,10 @@ class AboutUsScreen extends StatelessWidget {
           SizedBox(
             width: MediaQuery.of(context).size.width,
           ),
+          YouthopiaAppbar().paddingForOnly(top: 50),
           Container(
                   child: Image.asset('Assets/Group 6760.png')
-                      .paddingForOnly(top: 20))
+                      .paddingForOnly(top: 0))
               .paddingForOnly(bottom: 10),
           Container(
             decoration: BoxDecoration(
