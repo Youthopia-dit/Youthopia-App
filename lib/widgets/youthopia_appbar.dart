@@ -7,11 +7,12 @@ class YouthopiaAppbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Image.asset(
           'Assets/youthopia_logo.png',
-          width: 200,
-        ).paddingForOnly(left: 30)
+          width: 250,
+        ).paddingForOnly(left: 30, bottom: 10)
       ],
     );
   }
