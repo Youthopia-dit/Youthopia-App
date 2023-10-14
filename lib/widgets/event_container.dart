@@ -1,63 +1,60 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
+import 'package:youthopia/widgets/black_container.dart';
 import '../utils/colors.dart';
 
 class EventContainer extends StatelessWidget {
-  const EventContainer({super.key,required this.nameOfEvent,required this.time,required this.venue});
-final String nameOfEvent;
-final String time;
-final String venue;
+  const EventContainer(
+      {super.key,
+      required this.nameOfEvent,
+      required this.time,
+      required this.venue});
+  final String nameOfEvent;
+  final String time;
+  final String venue;
   @override
   Widget build(BuildContext context) {
-    return Container(
-        height: 110,
-        decoration: BoxDecoration(
-            color: CustomColors.Black40,
-            // height: 110,
-            borderRadius: BorderRadius.circular(25)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                //text
-                Text(
-                  nameOfEvent,
-                  style: TextStyle(
-                      fontSize: 25, color: Colors.white),
-                ),
-                Text(
-                  "Time:${time}",
-                  style: TextStyle(
-                      fontSize: 18,
-                      color: CustomColors.Grey1),
-                ),
-                Text(
-                  "Venue:${venue}",
-                  style: TextStyle(
-                      fontSize: 18,
-                      // textAlign:TextAlign.left,
-                      color: CustomColors.Grey1),
-                ),
-              ],
+    return BlackContainer(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                nameOfEvent,
+                style: const TextStyle(
+                    fontSize: 18,
+                    color: CustomColors.white,
+                    fontWeight: FontWeight.bold),
+              ).paddingForOnly(top: 15),
+              Text(
+                "Time: $time",
+                style: const TextStyle(fontSize: 18, color: CustomColors.Grey1),
+              ).paddingForOnly(top: 5, left: 5),
+              Text(
+                "Venue: $venue",
+                style: const TextStyle(
+                    fontSize: 18,
+                    // textAlign:TextAlign.left,
+                    color: CustomColors.Grey1),
+              ).paddingForOnly(left: 5),
+            ],
+          ),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'Assets/fake_image.png',
+              alignment: Alignment.center,
+              height: 100,
+              width: 150,
+              fit: BoxFit.cover,
             ),
-            Column(
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(20),
-                  child:Image.asset(
-                    'Assets/fake_image.png',
-                    alignment: Alignment.center,
-                    height: 80,
-                    width: 110,
-                    fit: BoxFit.cover,
-                  ),
-                )
-              ],
-            )
-          ],
-        ).paddingForAll(10.0))
-        .paddingForAll(10.0);
+          ).paddingForAll(4)
+        ],
+      ).paddingForAll(10),
+    );
   }
 }

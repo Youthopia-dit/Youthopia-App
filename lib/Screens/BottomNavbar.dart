@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:youthopia/Screens/forms.dart';
-import 'package:youthopia/widgets/background_scaffold.dart';
-import 'Registered_event.dart';
+import 'package:flutter_glow/flutter_glow.dart';
+import 'package:youthopia/screens/empty_screen.dart';
+import 'package:youthopia/screens/profile_screen.dart';
+import 'package:youthopia/utils/colors.dart';
+
+import 'event_list_screen.dart';
 
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({Key? key}) : super(key: key);
@@ -13,10 +16,10 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
   bool isProcessing = true;
   int _selectedIndex = 0;
   static final List<Widget> _list = <Widget>[
-    Forms(),
-    Registered_event(),
     Placeholder(),
-    Placeholder()
+    EventListScreen(),
+    EventListScreen(type: "my",),
+    ProfileScreen()
   ];
 
   void _onItemTapped(int index) {
@@ -32,8 +35,6 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
   }
 
   Future<void> loadData() async {
-    // Replace with your data loading logic
-    await Future.delayed(Duration(seconds: 2)); // Simulating data loading
     setState(() {
       isProcessing = false;
     });
@@ -49,29 +50,28 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
             : _list.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.blue,
+        selectedItemColor: Colors.grey,
         unselectedItemColor: Colors.grey,
+       
         items: const [
           
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: GlowIcon(Icons.home,
+                glowColor: _selectedIndex == 0 ? CustomColors.glowBlue : null),
             label: 'Home',
             backgroundColor: Colors.black,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.event_available_rounded),
-            label: 'Event',
-            backgroundColor: Colors.black,
+            icon: GlowIcon(Icons.event_available_rounded, glowColor: _selectedIndex == 1 ? CustomColors.glowBlue : null),
+            label: 'Events',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.event_sharp),
-            label: 'Registered Events',
-            backgroundColor: Colors.black,
+            icon: GlowIcon(Icons.event_sharp, glowColor: _selectedIndex == 2 ? CustomColors.glowBlue : null),
+            label: 'My Events',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_pin),
-            label: 'My Profile',
-            backgroundColor: Colors.black,
+            icon: GlowIcon(Icons.person_pin, glowColor: _selectedIndex == 4 ? CustomColors.glowBlue : null),
+            label: 'Profile',
           ),
         ],
         currentIndex: _selectedIndex,
