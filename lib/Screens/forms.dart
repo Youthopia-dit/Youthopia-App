@@ -44,27 +44,31 @@ class _FormsState extends State<Forms> {
                       padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
                       child: Column(
                         children: [
-                          SizedBox(height: 10),
+                          /*SizedBox(height: 10),
                           Row(
                             children: [
                               Padding(
-                                padding: const EdgeInsets.only(left:60.0),
+                                padding: const EdgeInsets.only(left: 60.0),
                                 child: Text(
                                   'Participants details',
                                   style: TextStyle(color: Colors.white),
                                 ),
                               ),
-                              
                               Padding(
-                                padding: const EdgeInsets.only(left:45.0),
-                                child: Text('X',style: TextStyle(decorationThickness: 100,color: Colors.white),),
+                                padding: const EdgeInsets.only(left: 45.0),
+                                child: Text(
+                                  'X',
+                                  style: TextStyle(
+                                      decorationThickness: 100,
+                                      color: Colors.white),
+                                ),
                               )
                             ],
-                          ),
+                          ),*/
                           SizedBox(height: 30),
                           Container(
                             color: Colors.transparent,
-                            child: Image.asset('Assets/DITU_Highres_WHITE.png'),
+                            child: Image.asset('Assets/youthopia_logo.png'),
                           ),
                           SizedBox(height: 10),
                           TabBar(
@@ -88,7 +92,8 @@ class _FormsState extends State<Forms> {
                                   child: Column(
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsets.fromLTRB(0, 0, 140, 0),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 140, 0),
                                         child: Text(
                                           "Team Name",
                                           style: TextStyle(color: Colors.white),
@@ -98,16 +103,22 @@ class _FormsState extends State<Forms> {
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: TextFormField(
+                                          onChanged: (value ) {
+
+                                          },
                                           style: TextStyle(
                                             color: Colors.white,
                                           ),
                                           decoration: InputDecoration(
                                             labelText: 'Enter Team Name',
-                                            labelStyle: TextStyle(color: Colors.white),
-                                            fillColor: Colors.white.withOpacity(0.05),
+                                            labelStyle:
+                                                TextStyle(color: Colors.white),
+                                            fillColor:
+                                                Colors.white.withOpacity(0.05),
                                             filled: true,
                                             border: OutlineInputBorder(
-                                              borderRadius: BorderRadius.circular(12.0),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
                                               borderSide: BorderSide(
                                                 color: Colors.white,
                                               ),
@@ -117,7 +128,8 @@ class _FormsState extends State<Forms> {
                                       ),
                                       SizedBox(height: 10),
                                       Padding(
-                                        padding: const EdgeInsets.fromLTRB(0, 0, 70, 0),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 70, 0),
                                         child: Text(
                                           "Team Leader's SAP ID",
                                           style: TextStyle(color: Colors.white),
@@ -132,11 +144,14 @@ class _FormsState extends State<Forms> {
                                           ),
                                           decoration: InputDecoration(
                                             labelText: 'Enter Leaders SAP ID',
-                                            labelStyle: TextStyle(color: Colors.white),
-                                            fillColor: Colors.white.withOpacity(0.05),
+                                            labelStyle:
+                                                TextStyle(color: Colors.white),
+                                            fillColor:
+                                                Colors.white.withOpacity(0.05),
                                             filled: true,
                                             border: OutlineInputBorder(
-                                              borderRadius: BorderRadius.circular(12.0),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
                                               borderSide: BorderSide(
                                                 color: Colors.white,
                                               ),
@@ -146,7 +161,8 @@ class _FormsState extends State<Forms> {
                                       ),
                                       SizedBox(height: 10),
                                       Padding(
-                                        padding: const EdgeInsets.fromLTRB(0, 0, 70, 0),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 70, 0),
                                         child: Text(
                                           "Enter Your Team Size",
                                           style: TextStyle(color: Colors.white),
@@ -173,7 +189,8 @@ class _FormsState extends State<Forms> {
                                       ),
                                       SizedBox(height: 10),
                                       Padding(
-                                        padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 20, 0),
                                         child: Text(
                                           "Team Member Name1",
                                           style: TextStyle(color: Colors.white),
@@ -187,11 +204,14 @@ class _FormsState extends State<Forms> {
                                           ),
                                           decoration: InputDecoration(
                                             labelText: 'Enter Name',
-                                            labelStyle: TextStyle(color: Colors.white),
-                                            fillColor: Colors.white.withOpacity(0.05),
+                                            labelStyle:
+                                                TextStyle(color: Colors.white),
+                                            fillColor:
+                                                Colors.white.withOpacity(0.05),
                                             filled: true,
                                             border: OutlineInputBorder(
-                                              borderRadius: BorderRadius.circular(12.0),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
                                               borderSide: BorderSide(
                                                 color: Colors.white,
                                               ),
@@ -201,7 +221,8 @@ class _FormsState extends State<Forms> {
                                       ),
                                       SizedBox(height: 10),
                                       Padding(
-                                        padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
+                                        padding: const EdgeInsets.fromLTRB(
+                                            0, 0, 20, 0),
                                         child: Text(
                                           "Team Leader's Phone Number",
                                           style: TextStyle(color: Colors.white),
@@ -216,11 +237,14 @@ class _FormsState extends State<Forms> {
                                           ),
                                           decoration: InputDecoration(
                                             labelText: 'Enter Leaders phone',
-                                            labelStyle: TextStyle(color: Colors.white),
-                                            fillColor: Colors.white.withOpacity(0.05),
+                                            labelStyle:
+                                                TextStyle(color: Colors.white),
+                                            fillColor:
+                                                Colors.white.withOpacity(0.05),
                                             filled: true,
                                             border: OutlineInputBorder(
-                                              borderRadius: BorderRadius.circular(12.0),
+                                              borderRadius:
+                                                  BorderRadius.circular(12.0),
                                               borderSide: BorderSide(
                                                 color: Colors.white,
                                               ),
@@ -229,32 +253,14 @@ class _FormsState extends State<Forms> {
                                         ),
                                       ),
                                       SizedBox(height: 10),
-                                      ElevatedButton(
-                                        onPressed: () {},
-                                        style: ElevatedButton.styleFrom(
-                                          primary: Colors.white,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(30.0),
-                                          ),
-                                        ).copyWith(
-                                          fixedSize: MaterialStateProperty.all(
-                                            Size(280, 50),
-                                          ),
-                                        ),
-                                        child: Text(
-                                          'Pay Now',
-                                          style: TextStyle(
-                                            color: Colors.black, 
-                                          ),
-                                        ),
-                                      ),
-                                      SizedBox(height: 20),
+                                      
                                     ],
                                   ),
                                 ),
                                 SingleChildScrollView(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Name",
@@ -267,18 +273,21 @@ class _FormsState extends State<Forms> {
                                         ),
                                         decoration: InputDecoration(
                                           labelText: 'Enter Your Name',
-                                          labelStyle: TextStyle(color: Colors.white),
-                                          fillColor: Colors.white.withOpacity(0.05),
+                                          labelStyle:
+                                              TextStyle(color: Colors.white),
+                                          fillColor:
+                                              Colors.white.withOpacity(0.05),
                                           filled: true,
                                           border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(12.0),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
                                             borderSide: BorderSide(
                                               color: Colors.white,
                                             ),
                                           ),
                                         ),
                                       ),
-                                      SizedBox (height: 10),
+                                      SizedBox(height: 10),
                                       Text(
                                         "SAP ID",
                                         style: TextStyle(color: Colors.white),
@@ -290,11 +299,14 @@ class _FormsState extends State<Forms> {
                                         ),
                                         decoration: InputDecoration(
                                           labelText: 'Enter Your SAP ID',
-                                          labelStyle: TextStyle(color: Colors.white),
-                                          fillColor: Colors.white.withOpacity(0.05),
+                                          labelStyle:
+                                              TextStyle(color: Colors.white),
+                                          fillColor:
+                                              Colors.white.withOpacity(0.05),
                                           filled: true,
                                           border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(12.0),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
                                             borderSide: BorderSide(
                                               color: Colors.white,
                                             ),
@@ -313,11 +325,14 @@ class _FormsState extends State<Forms> {
                                         ),
                                         decoration: InputDecoration(
                                           labelText: 'Enter your phone number',
-                                          labelStyle: TextStyle(color: Colors.white),
-                                          fillColor: Colors.white.withOpacity(0.05),
+                                          labelStyle:
+                                              TextStyle(color: Colors.white),
+                                          fillColor:
+                                              Colors.white.withOpacity(0.05),
                                           filled: true,
                                           border: OutlineInputBorder(
-                                            borderRadius: BorderRadius.circular(12.0),
+                                            borderRadius:
+                                                BorderRadius.circular(12.0),
                                             borderSide: BorderSide(
                                               color: Colors.white,
                                             ),
@@ -330,7 +345,8 @@ class _FormsState extends State<Forms> {
                                         style: ElevatedButton.styleFrom(
                                           primary: Colors.white,
                                           shape: RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.circular(30.0),
+                                            borderRadius:
+                                                BorderRadius.circular(30.0),
                                           ),
                                         ).copyWith(
                                           fixedSize: MaterialStateProperty.all(
@@ -340,7 +356,7 @@ class _FormsState extends State<Forms> {
                                         child: Text(
                                           'Pay Now',
                                           style: TextStyle(
-                                            color: Colors.black, 
+                                            color: Colors.black,
                                           ),
                                         ),
                                       ),
@@ -354,9 +370,38 @@ class _FormsState extends State<Forms> {
                       ),
                     ),
                   ),
+                  
                 ),
               ),
             ),
+            Positioned.fill(
+              child: Expanded(
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ElevatedButton(
+                                              onPressed: () {},
+                                              style: ElevatedButton.styleFrom(
+                                                primary: Colors.white,
+                                                shape: RoundedRectangleBorder(
+                                                  borderRadius:
+                                                      BorderRadius.circular(30.0),
+                                                ),
+                                              ).copyWith(
+                                                fixedSize: MaterialStateProperty.all(
+                                                  Size(280, 50),
+                                                ),
+                                              ),
+                                              child: Text(
+                                                'Registration Now',
+                                                style: TextStyle(
+                                                  color: Colors.black,
+                                                ),
+                                              ),
+                                            ),
+                ),
+              ),
+            ),
+                                      SizedBox(height: 30),
           ],
         ),
       ),

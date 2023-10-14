@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
-import 'package:youthopia/screens/empty_screen.dart';
+//import 'package:youthopia/screens/empty_screen.dart';
 import 'package:youthopia/screens/profile_screen.dart';
 import 'package:youthopia/utils/colors.dart';
 
@@ -8,6 +8,7 @@ import 'event_list_screen.dart';
 
 class BottomNavbar extends StatefulWidget {
   const BottomNavbar({Key? key}) : super(key: key);
+
   @override
   State<BottomNavbar> createState() => _CustomBottomNavigationBarState();
 }
@@ -50,11 +51,13 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
             : _list.elementAt(_selectedIndex),
       ),
       bottomNavigationBar: BottomNavigationBar(
-        selectedItemColor: Colors.grey,
-        unselectedItemColor: Colors.grey,
-       
-        items: const [
-          
+        backgroundColor: CustomColors.backgroundGrey,
+        selectedItemColor: CustomColors.glowBlue,
+        unselectedItemColor: CustomColors.white,
+        type: BottomNavigationBarType.fixed,
+        useLegacyColorScheme: false,
+        showUnselectedLabels: true,
+        items: [
           BottomNavigationBarItem(
             icon: GlowIcon(Icons.home,
                 glowColor: _selectedIndex == 0 ? CustomColors.glowBlue : null),
