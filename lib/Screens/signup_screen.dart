@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/Screens/signup2_screen.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
@@ -66,6 +67,7 @@ class SignUpPage extends StatelessWidget {
                         width: 209.0, // Set the width to 209
                         height: 36.0, // Set the height to 36
                         child: TextFormField(
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                               fillColor: Colors.white,
                               focusedBorder: OutlineInputBorder(
@@ -108,6 +110,7 @@ class SignUpPage extends StatelessWidget {
                         width: 209.0, // Set the width to 209
                         height: 36.0, // Set the height to 36
                         child: TextFormField(
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                               fillColor: Colors.white,
                               focusedBorder: OutlineInputBorder(
@@ -150,6 +153,7 @@ class SignUpPage extends StatelessWidget {
                         width: 209.0, // Set the width to 209
                         height: 36.0, // Set the height to 36
                         child: TextFormField(
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                               fillColor: Colors.white,
                               focusedBorder: OutlineInputBorder(
@@ -192,6 +196,7 @@ class SignUpPage extends StatelessWidget {
                         width: 209.0, // Set the width to 209
                         height: 36.0, // Set the height to 36
                         child: TextFormField(
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                               fillColor: Colors.white,
                               focusedBorder: OutlineInputBorder(
@@ -212,7 +217,12 @@ class SignUpPage extends StatelessWidget {
                         width: 158,
                         child: ElevatedButton(
                           onPressed: () {
-                            //on pressed
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      SignUp2Page()), // Replace with your desired page
+                            );
                           },
                           style: ElevatedButton.styleFrom(
                             primary: Colors.white, // Button background color

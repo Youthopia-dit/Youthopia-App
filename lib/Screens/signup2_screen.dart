@@ -36,7 +36,7 @@ class SignUp2Page extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SignupHeading(),
+                    SignupHeading2(),
                     SizedBox(height: 65),
                     Center(
                       child: Container(
@@ -66,6 +66,7 @@ class SignUp2Page extends StatelessWidget {
                         width: 209.0, // Set the width to 209
                         height: 36.0, // Set the height to 36
                         child: TextFormField(
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                               fillColor: Colors.white,
                               focusedBorder: OutlineInputBorder(
@@ -108,6 +109,7 @@ class SignUp2Page extends StatelessWidget {
                         width: 209.0, // Set the width to 209
                         height: 36.0, // Set the height to 36
                         child: TextFormField(
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                               fillColor: Colors.white,
                               focusedBorder: OutlineInputBorder(
@@ -150,6 +152,7 @@ class SignUp2Page extends StatelessWidget {
                         width: 209.0, // Set the width to 209
                         height: 36.0, // Set the height to 36
                         child: TextFormField(
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                               fillColor: Colors.white,
                               focusedBorder: OutlineInputBorder(
@@ -192,6 +195,7 @@ class SignUp2Page extends StatelessWidget {
                         width: 209.0, // Set the width to 209
                         height: 36.0, // Set the height to 36
                         child: TextFormField(
+                          style: TextStyle(color: Colors.white),
                           decoration: InputDecoration(
                               fillColor: Colors.white,
                               focusedBorder: OutlineInputBorder(
@@ -258,7 +262,7 @@ class SignUp2Page extends StatelessWidget {
   }
 }
 
-class SignupHeading extends StatelessWidget {
+class SignupHeading2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -287,7 +291,7 @@ class SignupHeading extends StatelessWidget {
                   child: Container(
                     color: Colors.transparent, // Color of the first container
                     child: Image.asset(
-                        'Assets/Group 6481.png'), // Add your image asset
+                        'Assets/Group 6481 (1).png'), // Add your image asset
                   ),
                 ),
                 Expanded(
