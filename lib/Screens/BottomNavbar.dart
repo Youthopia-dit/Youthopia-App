@@ -19,7 +19,7 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
   static final List<Widget> _list = <Widget>[
     Placeholder(),
     EventListScreen(),
-    Placeholder(),
+    EventListScreen(type: "my",),
     ProfileScreen()
   ];
 
