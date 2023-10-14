@@ -50,7 +50,7 @@ class SignUpPage extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(38, 0, 0, 0),
                             child: Text(
-                              'Your Text Here',
+                              'Name*',
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -92,7 +92,7 @@ class SignUpPage extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(38, 0, 0, 0),
                             child: Text(
-                              'Your Text Here',
+                              'Email*',
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -134,7 +134,7 @@ class SignUpPage extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(38, 0, 0, 0),
                             child: Text(
-                              'Your Text Here',
+                              'Phone*',
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -176,7 +176,7 @@ class SignUpPage extends StatelessWidget {
                           child: Padding(
                             padding: const EdgeInsets.fromLTRB(38, 0, 0, 0),
                             child: Text(
-                              'Your Text Here',
+                              'Gender*',
                               style: TextStyle(
                                 color: Colors.white,
                               ),
