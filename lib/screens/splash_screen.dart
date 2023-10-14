@@ -1,24 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/screens/college_screen.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
+import 'package:youthopia/widgets/logo_widget.dart';
 
-class SplashScreen extends StatelessWidget {
+class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return BackgroundScaffold(child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: <Widget>[
-          Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Image.asset('Assets/naac.png'),
-                Image.asset('Assets/DIT LOGO WHITE.png'),
-                Image.asset('Assets/25_years_logo.png'),
+  State<SplashScreen> createState() => _SplashScreenState();
+}
 
-              ]).paddingForOnly(top: 30),
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    navigate();
+    super.initState();
+  }
+
+  void navigate() async {
+    await Future.delayed(const Duration(seconds: 3));
+    Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (context) => CollegeScreen()),
+        (route) => false);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return BackgroundScaffold(
+        child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+          const HorizontalLogo().paddingForOnly(top: 30),
           Column(
             children: [
               Row(
@@ -39,6 +54,5 @@ class SplashScreen extends StatelessWidget {
           Image.asset('Assets/youthopia_white_flower.png')
               .paddingForOnly(bottom: 30)
         ]));
-
   }
 }

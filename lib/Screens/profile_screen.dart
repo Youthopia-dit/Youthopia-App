@@ -2,22 +2,23 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
+import 'package:youthopia/widgets/background_container.dart';
 import 'package:youthopia/widgets/profile_details.dart';
 
 import '../widgets/background_scaffold.dart';
 
-class Profile extends StatefulWidget {
-  const Profile({super.key});
+class ProfileScreen extends StatefulWidget {
+  const ProfileScreen({super.key});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<ProfileScreen> createState() => _ProfileScreenState();
 }
 
-class _ProfileState extends State<Profile> {
+class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     // return const Placeholder();
-    return BackgroundScaffold(
+    return BackgroundContainer(
       child: Column(
         children: [
           SizedBox(
@@ -36,7 +37,7 @@ class _ProfileState extends State<Profile> {
               width: MediaQuery.of(context).size.width - 60,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: CustomColors.Black40,
+                color: CustomColors.blackTrans,
               ),
             ).paddingForOnly(top: 60),
             Positioned(

@@ -1,8 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/utils/widget_extensions.dart';
 
-AppBar YouthopiaAppbar() {
-  return AppBar(
-    title: Image.asset('Assets/youthopia_logo.png'),
-    actions: [IconButton(onPressed: () {}, icon: Icon(Icons.search))],
-  );
+class YouthopiaAppbar extends StatelessWidget {
+  const YouthopiaAppbar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Image.asset(
+          'Assets/youthopia_logo.png',
+          width: 200,
+        ).paddingForOnly(left: 30)
+      ],
+    );
+  }
 }
