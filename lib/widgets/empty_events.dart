@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
+
 class NoEvents extends StatelessWidget {
   const NoEvents({super.key});
 
@@ -9,10 +10,14 @@ class NoEvents extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-
         Image.asset('Assets/no_events.png'),
-        Text('Oh! You\'re not registered for any events.',
-          style: TextStyle(color: CustomColors.white, fontSize: 20, ),).paddingForOnly(top: 20),
+        const Text(
+          'Oh! You\'re not registered for any events.',
+          style: TextStyle(
+            color: CustomColors.white,
+            fontSize: 20,
+          ),
+        ).paddingForOnly(top: 20),
         SizedBox(
           width: 250.0,
           height: 40.0,
@@ -23,13 +28,10 @@ class NoEvents extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
                 )),
-            child:
-              Text(
-                'Register now event',
-                style: TextStyle(color: CustomColors.black, fontSize: 20),
-              ),
-
-
+            child: const Text(
+              'Register now event',
+              style: TextStyle(color: CustomColors.black, fontSize: 20),
+            ),
           ),
         ).paddingForOnly(top: 20),
       ],

@@ -1,22 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:youthopia/utils/colors.dart';
+import 'package:youthopia/widgets/background_container.dart';
 
 class BackgroundScaffold extends StatelessWidget {
-  const BackgroundScaffold({super.key, required this.child});
+  const BackgroundScaffold({super.key, required this.child, this.appBar});
   final Widget child;
+  final SliverAppBar? appBar;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('Assets/background_image.png'),
-                fit: BoxFit.fill,
-                colorFilter: ColorFilter.mode(
-                    CustomColors.black.withOpacity(.5), BlendMode.darken)),
-          ),
-        child: child,
-      ),
-    );
+    return Scaffold(body: BackgroundContainer(child: child));
   }
 }
