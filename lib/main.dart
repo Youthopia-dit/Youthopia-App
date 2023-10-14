@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-
+import 'Screens/signup_screen.dart';
 import 'Screens/aboutus.dart';
 
 void main() {
@@ -15,11 +14,11 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: SplashScreen(),
+      // theme: ThemeData(
+      //   colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+      //   useMaterial3: true,
+      // ),
+      home: SignUpPage(),
     );
   }
 }
