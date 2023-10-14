@@ -15,7 +15,7 @@ class _FormsState extends State<Forms> {
   TextEditingController teamNameController = TextEditingController();
   TextEditingController sapIdController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
-   List<String> teamMembers = List.filled(5, '');
+  List<String> teamMembers = List.filled(5, '');
 
   void incrementCounter() {
     setState(() {
@@ -33,18 +33,19 @@ class _FormsState extends State<Forms> {
     });
   }
 
-   void register() {
-  
+  void register() {
+    // Collect the entered data
     String teamName = teamNameController.text;
     String sapId = sapIdController.text;
     String phone = phoneController.text;
 
-
+    // Collect team members' names
     List<String> memberNames = [];
     for (int i = 0; i < counter; i++) {
       memberNames.add(teamMembers[i]);
     }
 
+    // Print the collected data
     print('Team Name: $teamName');
     print("Team Leader's SAP ID: $sapId");
     print("Team Leader's Phone Number: $phone");
@@ -214,6 +215,10 @@ class _FormsState extends State<Forms> {
                                                 style: TextStyle(
                                                   color: Colors.white,
                                                 ),
+                                                onChanged: (value) {
+                                                  // Store team member names
+                                                  teamMembers[i - 1] = value;
+                                                },
                                                 decoration: InputDecoration(
                                                   labelText: 'Enter Name',
                                                   labelStyle:
@@ -355,7 +360,7 @@ class _FormsState extends State<Forms> {
                                       ),
                                       SizedBox(height: 20),
                                       ElevatedButton(
-                                        onPressed: () {},
+                                        onPressed: register,
                                         style: ElevatedButton.styleFrom(
                                           primary: Colors.white,
                                           shape: RoundedRectangleBorder(
@@ -387,29 +392,28 @@ class _FormsState extends State<Forms> {
                 ),
               ),
             ),
-             Padding(
+            Padding(
               padding: const EdgeInsets.all(8.0),
               child: Positioned.fill(
-                child: Expanded(
-                  child: Align(
-                    alignment: Alignment.bottomCenter,
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        primary: Colors.white,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ).copyWith(
-                        fixedSize: MaterialStateProperty.all(
-                          Size(280, 50),
-                        ),
+                bottom: 10,
+                child: Align(
+                  alignment: Alignment.bottomCenter,
+                  child: ElevatedButton(
+                    onPressed: register,
+                    style: ElevatedButton.styleFrom(
+                      primary: Colors.white,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
-                      child: Text(
-                        'Registration Now',
-                        style: TextStyle(
-                          color: Colors.black,
-                        ),
+                    ).copyWith(
+                      fixedSize: MaterialStateProperty.all(
+                        Size(280, 50),
+                      ),
+                    ),
+                    child: Text(
+                      'Registration Now',
+                      style: TextStyle(
+                        color: Colors.black,
                       ),
                     ),
                   ),
@@ -446,7 +450,6 @@ class CustomSquareBox extends StatelessWidget {
           text,
           style: TextStyle(fontSize: 15, color: Colors.white),
         ),
-      ),
-    );
+      ));
   }
 }
