@@ -11,20 +11,47 @@ class Forms extends StatefulWidget {
 }
 
 class _FormsState extends State<Forms> {
-  int counter = 0;
+  int counter = 1;
+  TextEditingController teamNameController = TextEditingController();
+  TextEditingController sapIdController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+   List<String> teamMembers = List.filled(5, '');
 
   void incrementCounter() {
     setState(() {
-      counter++;
+      if (counter < 5) {
+        counter++;
+      }
     });
   }
 
   void decrementCounter() {
     setState(() {
-      if (counter > 0) {
+      if (counter > 1) {
         counter--;
       }
     });
+  }
+
+   void register() {
+  
+    String teamName = teamNameController.text;
+    String sapId = sapIdController.text;
+    String phone = phoneController.text;
+
+
+    List<String> memberNames = [];
+    for (int i = 0; i < counter; i++) {
+      memberNames.add(teamMembers[i]);
+    }
+
+    print('Team Name: $teamName');
+    print("Team Leader's SAP ID: $sapId");
+    print("Team Leader's Phone Number: $phone");
+    print('Team Members:');
+    for (int i = 0; i < memberNames.length; i++) {
+      print('Team Member ${i + 1}: ${memberNames[i]}');
+    }
   }
 
   @override
@@ -44,27 +71,6 @@ class _FormsState extends State<Forms> {
                       padding: EdgeInsets.fromLTRB(25, 0, 25, 0),
                       child: Column(
                         children: [
-                          /*SizedBox(height: 10),
-                          Row(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 60.0),
-                                child: Text(
-                                  'Participants details',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                              ),
-                              Padding(
-                                padding: const EdgeInsets.only(left: 45.0),
-                                child: Text(
-                                  'X',
-                                  style: TextStyle(
-                                      decorationThickness: 100,
-                                      color: Colors.white),
-                                ),
-                              )
-                            ],
-                          ),*/
                           SizedBox(height: 30),
                           Container(
                             color: Colors.transparent,
@@ -103,9 +109,8 @@ class _FormsState extends State<Forms> {
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: TextFormField(
-                                          onChanged: (value ) {
-
-                                          },
+                                          controller: teamNameController,
+                                          onChanged: (value) {},
                                           style: TextStyle(
                                             color: Colors.white,
                                           ),
@@ -139,6 +144,7 @@ class _FormsState extends State<Forms> {
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: TextFormField(
+                                          controller: sapIdController,
                                           style: TextStyle(
                                             color: Colors.white,
                                           ),
@@ -188,37 +194,45 @@ class _FormsState extends State<Forms> {
                                         ),
                                       ),
                                       SizedBox(height: 10),
-                                      Padding(
-                                        padding: const EdgeInsets.fromLTRB(
-                                            0, 0, 20, 0),
-                                        child: Text(
-                                          "Team Member Name1",
-                                          style: TextStyle(color: Colors.white),
-                                        ),
-                                      ),
-                                      Padding(
-                                        padding: const EdgeInsets.all(8.0),
-                                        child: TextFormField(
-                                          style: TextStyle(
-                                            color: Colors.white,
-                                          ),
-                                          decoration: InputDecoration(
-                                            labelText: 'Enter Name',
-                                            labelStyle:
-                                                TextStyle(color: Colors.white),
-                                            fillColor:
-                                                Colors.white.withOpacity(0.05),
-                                            filled: true,
-                                            border: OutlineInputBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(12.0),
-                                              borderSide: BorderSide(
-                                                color: Colors.white,
+                                      for (int i = 1; i <= counter; i++)
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Padding(
+                                              padding: const EdgeInsets.fromLTRB(
+                                                  0, 0, 20, 0),
+                                              child: Text(
+                                                "Team Member Name $i",
+                                                style:
+                                                    TextStyle(color: Colors.white),
                                               ),
                                             ),
-                                          ),
+                                            Padding(
+                                              padding: const EdgeInsets.all(8.0),
+                                              child: TextFormField(
+                                                style: TextStyle(
+                                                  color: Colors.white,
+                                                ),
+                                                decoration: InputDecoration(
+                                                  labelText: 'Enter Name',
+                                                  labelStyle:
+                                                      TextStyle(color: Colors.white),
+                                                  fillColor: Colors.white
+                                                      .withOpacity(0.05),
+                                                  filled: true,
+                                                  border: OutlineInputBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(12.0),
+                                                    borderSide: BorderSide(
+                                                      color: Colors.white,
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
-                                      ),
                                       SizedBox(height: 10),
                                       Padding(
                                         padding: const EdgeInsets.fromLTRB(
@@ -232,6 +246,7 @@ class _FormsState extends State<Forms> {
                                       Padding(
                                         padding: const EdgeInsets.all(8.0),
                                         child: TextFormField(
+                                          controller: phoneController,
                                           style: TextStyle(
                                             color: Colors.white,
                                           ),
@@ -253,7 +268,6 @@ class _FormsState extends State<Forms> {
                                         ),
                                       ),
                                       SizedBox(height: 10),
-                                      
                                     ],
                                   ),
                                 ),
@@ -370,38 +384,39 @@ class _FormsState extends State<Forms> {
                       ),
                     ),
                   ),
-                  
                 ),
               ),
             ),
-            Positioned.fill(
-              child: Expanded(
-                child: Align(
-                  alignment: Alignment.bottomCenter,
-                  child: ElevatedButton(
-                                              onPressed: () {},
-                                              style: ElevatedButton.styleFrom(
-                                                primary: Colors.white,
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30.0),
-                                                ),
-                                              ).copyWith(
-                                                fixedSize: MaterialStateProperty.all(
-                                                  Size(280, 50),
-                                                ),
-                                              ),
-                                              child: Text(
-                                                'Registration Now',
-                                                style: TextStyle(
-                                                  color: Colors.black,
-                                                ),
-                                              ),
-                                            ),
+             Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Positioned.fill(
+                child: Expanded(
+                  child: Align(
+                    alignment: Alignment.bottomCenter,
+                    child: ElevatedButton(
+                      onPressed: () {},
+                      style: ElevatedButton.styleFrom(
+                        primary: Colors.white,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                      ).copyWith(
+                        fixedSize: MaterialStateProperty.all(
+                          Size(280, 50),
+                        ),
+                      ),
+                      child: Text(
+                        'Registration Now',
+                        style: TextStyle(
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                  ),
                 ),
               ),
             ),
-                                      SizedBox(height: 30),
+            SizedBox(height: 50),
           ],
         ),
       ),
