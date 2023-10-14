@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
+import 'package:youthopia/widgets/logo_widget.dart';
 
 class CollegeScreen extends StatelessWidget {
   const CollegeScreen({super.key});
@@ -10,20 +11,14 @@ class CollegeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BackgroundScaffold(
         child: Column(children: <Widget>[
-      Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <Widget>[
-        Image.asset('Assets/naac.png'),
-        Image.asset('Assets/DIT LOGO WHITE.png'),
-        Image.asset('Assets/25_years_logo.png'),
-      ]).paddingForOnly(top: 10),
-
+      const HorizontalLogo().paddingForOnly(top: 30),
       Row(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
             Image.asset('Assets/youthopiastar.png'),
-          ]).paddingForOnly(top: 30),
-
-      Text(
+          ]).paddingForOnly(top: 50),
+      const Text(
         'Who are you?',
         style: TextStyle(
             fontWeight: FontWeight.bold,
@@ -40,14 +35,12 @@ class CollegeScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18.0),
               )),
-
-
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text(
+            const Text(
               'DITIAN',
               style: TextStyle(color: CustomColors.black, fontSize: 20),
-            ),
-            Icon(
+            ).paddingForOnly(right: 10),
+            const Icon(
               Icons.arrow_right_alt_sharp,
               color: CustomColors.black,
             )
@@ -61,24 +54,21 @@ class CollegeScreen extends StatelessWidget {
           onPressed: () {},
           style: OutlinedButton.styleFrom(
               shape: RoundedRectangleBorder(
-            side: BorderSide(color: CustomColors.black, width: 30.0),
+            side: const BorderSide(color: CustomColors.black, width: 30.0),
             borderRadius: BorderRadius.circular(18.0),
           )),
-
-
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text(
+            const Text(
               'Non DITIAN',
               style: TextStyle(color: CustomColors.white, fontSize: 20),
-            ),
-            Icon(
+            ).paddingForOnly(right: 10),
+            const Icon(
               Icons.arrow_right_alt_sharp,
               color: CustomColors.white,
             )
           ]),
         ),
       ).paddingForOnly(top: 20),
-
       Expanded(
           child: Align(
               alignment: Alignment.bottomCenter,
