@@ -8,7 +8,6 @@ import 'package:youthopia/screens/aboutus.dart';
 import 'package:youthopia/screens/splash_screen.dart';
 import 'package:youthopia/screens/Registered_event.dart';
 import 'package:youthopia/screens/login_screen.dart';
-import 'package:youthopia/screens/college_screen.dart';
 import 'package:youthopia/screens/test_screen.dart';
 import 'package:youthopia/screens/ticket_screen.dart';
 import 'package:youthopia/widgets/empty_events.dart';
@@ -22,8 +21,6 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    return const MaterialApp(
-        home: EventInfo(time: '10PM',date: '10 Nov', venue: 'chanakya', fee: '₹100',));
+    return MaterialApp(home: LiveEventScreen());
   }
 }

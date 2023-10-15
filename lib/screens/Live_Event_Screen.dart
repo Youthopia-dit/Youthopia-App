@@ -13,6 +13,8 @@ class LiveEventScreen extends StatelessWidget {
     'Rectangle 12376.png',
     'Rectangle 12376.png',
     'Rectangle 12376.png',
+    'Rectangle 12376.png',
+    'Rectangle 12376.png',
   ];
 
   @override
@@ -67,19 +69,15 @@ class LiveEventScreen extends StatelessWidget {
           const SizedBox(
             height: 20,
           ),
-          Row(
-            children: [
-              Expanded(
-                child: ListView.builder(
-                  scrollDirection: Axis.horizontal,
-                  itemCount: sponsorImages.length,
-                  itemBuilder: (BuildContext context, int index) {
-                    return SponserImageWidget();
-                  },
-                ),
-              ),
-            ],
-          )
+          Expanded(
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: sponsorImages.length,
+              itemBuilder: (context, index) {
+                return SponserImageWidget(imagePath: sponsorImages[index]);
+              },
+            ),
+          ),
         ],
       ),
     );

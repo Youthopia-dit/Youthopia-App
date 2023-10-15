@@ -9,14 +9,14 @@ class BackgroundScaffold extends StatelessWidget {
     return Scaffold(
       body: Container(
         width: MediaQuery.of(context).size.width,
-          height: MediaQuery.of(context).size.height,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('Assets/background_image.png'),
-                fit: BoxFit.fill,
-                colorFilter: ColorFilter.mode(
-                    CustomColors.black.withOpacity(.5), BlendMode.darken)),
-          ),
+        height: MediaQuery.of(context).size.height,
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              image: const AssetImage('Assets/background_image.png'),
+              fit: BoxFit.fill,
+              colorFilter: ColorFilter.mode(
+                  CustomColors.black.withOpacity(.5), BlendMode.darken)),
+        ),
         child: child,
       ),
     );

@@ -11,6 +11,7 @@ class LiveEventCard extends StatelessWidget {
       children: [
         SizedBox(
           height: 150,
+          width: 300,
           child: Image.asset(
             'Assets/Rectangle 1521 (1).png',
             fit: BoxFit.cover,
@@ -34,17 +35,24 @@ class LiveEventCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
-                children: [
-                  Icon(
-                    Icons.calendar_today,
-                    color: Colors.white,
-                  ),
-                  Text(
-                    'Date',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                ],
+            ],
+          ),
+        ),
+        const Positioned(
+          bottom: 24,
+          left: 4,
+          child: Row(
+            children: [
+              Icon(
+                Icons.calendar_today,
+                color: Colors.white,
+              ),
+              SizedBox(
+                width: 2,
+              ),
+              Text(
+                'Date',
+                style: TextStyle(color: Colors.white),
               ),
             ],
           ),
