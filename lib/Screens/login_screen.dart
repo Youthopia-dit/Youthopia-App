@@ -85,6 +85,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   )).paddingWithSymmetry(horizontal: 20)
             ],
           )).paddingWithSymmetry(horizontal: 10),
+          Spacer(),
           Image.asset('Assets/youthopia_white_flower.png')
               .paddingForOnly(top: 20)
         ],
