@@ -19,27 +19,30 @@ class EventListScreen extends StatefulWidget {
 class _EventListScreenState extends State<EventListScreen> {
   @override
   Widget build(BuildContext context) {
-    return BackgroundContainer(
-        child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: 8,
-            itemBuilder: (context, index) {
-              if (index == 0) {
-                if (widget.type == "my") {
-                  return const YouthopiaAppbar();
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: BackgroundContainer(
+          child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: 8,
+              itemBuilder: (context, index) {
+                if (index == 0) {
+                  if (widget.type == "my") {
+                    return const YouthopiaAppbar();
+                  }
+                  return const YouthopiaSearchBar();
                 }
-                return const YouthopiaSearchBar();
-              }
-              if(index == 7) {
-                return const SizedBox(
-                  height: 20,
+                if(index == 7) {
+                  return const SizedBox(
+                    height: 20,
+                  );
+                }
+                return const EventContainer(
+                  nameOfEvent: "Name of event",
+                  time: "10:00am",
+                  venue: "hdfg",
                 );
-              }
-              return const EventContainer(
-                nameOfEvent: "Name of event",
-                time: "10:00am",
-                venue: "hdfg",
-              );
-            }));
+              })),
+    );
   }
 }

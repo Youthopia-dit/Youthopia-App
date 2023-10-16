@@ -8,5 +8,5 @@ class CustomColors{
   static const glowBlue = Color(0xFF00FFFF);
   static const grey = Color(0xFFD9D9D9);
   static const backgroundGrey = Color(0xFF0F0E0E);
-
+  static const red = Color(0xFFFF0000);
 }
