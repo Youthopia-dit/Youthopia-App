@@ -18,7 +18,11 @@ class SignUpScreen2 extends StatefulWidget {
 class _SignUpScreen2State extends State<SignUpScreen2> {
   final formKey = GlobalKey<FormState>();
 
-  String name = '';
+  String coll_name = '';
+  String year = '';
+  String coll_id = '';
+  String branch = '';
+
 
   @override
   Widget build(BuildContext context) {
@@ -40,19 +44,56 @@ class _SignUpScreen2State extends State<SignUpScreen2> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               FormInputWidget(
-                                fieldName: 'Name',
+                                fieldName: 'College Name',
                                 onChanged: (value) {
-                                  name = value;
+                                  coll_name = value;
                                 },
-                                validation: (value) => (name.isEmpty ||
-                                    !RegExp(r'^[A-Za-z ]+$').hasMatch(name)),
+                                validation: (value) => (coll_name.isEmpty ||
+                                    !RegExp(r'^[A-Za-z ]+$').hasMatch(coll_name)),
                                 errorText: 'Enter Valid Name',
+                                keyboard: TextInputType.text,
+                              ).paddingForOnly(bottom: 30),
+                              FormInputWidget(
+                                fieldName: 'Year',
+                                onChanged: (value) {
+                                  year = value;
+                                },
+                                validation: (value) => (year.isEmpty ||
+                                    !RegExp(r'^[1-5]+$').hasMatch(year)),
+                                errorText: 'Enter a Valid Year',
+                                keyboard: TextInputType.text,
+                              ).paddingForOnly(bottom: 30),
+                              FormInputWidget(
+                                fieldName: 'College ID',
+                                onChanged: (value) {
+                                  coll_id = value;
+                                },
+                                validation: (value)
+                                {
+                                  if(value.length!=10)
+                                    return true;
+                                  else
+                                    return false;
+                        },
+                                errorText: 'Enter a Valid College ID',
+                                keyboard: TextInputType.text,
+                              ).paddingForOnly(bottom: 30),
+                              FormInputWidget(
+                                fieldName: 'Branch',
+                                onChanged: (value) {
+                                  branch = value;
+                                },
+                                validation: (value) => true,
+                                errorText: 'Enter a Valid Branch',
                                 keyboard: TextInputType.text,
                               ).paddingForOnly(bottom: 30),
                               OutlinedButton(
                                 onPressed: () {
                                   if (formKey.currentState!.validate()) {
-                                    print(name);
+                                    print(coll_name);
+                                    print(year);
+                                    print(coll_id);
+                                    print(branch);
                                     print('Submitted');
                                   }
                                 },
