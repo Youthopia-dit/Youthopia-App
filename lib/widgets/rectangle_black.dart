@@ -18,7 +18,7 @@ class InkWellRectangle extends StatelessWidget {
         height: 570.0,
         decoration: BoxDecoration(
           color: Colors.black.withOpacity(0.8), // Black color with 80% opacity
-          borderRadius: BorderRadius.circular(10.0), // Rounded corners
+          borderRadius: BorderRadius.circular(25.0), // Rounded corners
         ),
         child: child, // Add the provided child widget here
       ),
