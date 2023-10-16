@@ -1,3 +1,4 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
@@ -19,6 +20,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final formKey = GlobalKey<FormState>();
 
   String name = '';
+  String email = '';
+  String phone = '';
+  String password = '';
+  String confirmPassword = '';
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +54,59 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         errorText: 'Enter Valid Name',
                         keyboard: TextInputType.text,
                       ).paddingForOnly(bottom: 30),
+                      FormInputWidget(
+                        fieldName: 'Email',
+                        onChanged: (value) {
+                          email = value;
+                        },
+                        validation: (value) =>
+                            (!EmailValidator.validate(email) || email.isEmpty),
+                        errorText: 'Enter Valid Email',
+                        keyboard: TextInputType.emailAddress,
+                      ).paddingForOnly(bottom: 30),
+
+                      FormInputWidget(
+                        fieldName: 'Phone Number',
+                        onChanged: (value) {
+                          phone = value;
+                        },
+                        validation: (value) => (phone.isEmpty ||
+                            phone.length !=10),
+                        errorText: 'Enter Valid phone number',
+                        keyboard: TextInputType.text,
+                      ).paddingForOnly(bottom: 30),
+
+                      FormInputWidget(
+                        fieldName: 'PassWord',
+                        onChanged: (value) {
+                          password = value;
+                        },
+                        validation: (value) => (password.isEmpty ||
+                            password.length<6|| password.length>12),
+                        errorText: 'Enter Valid Password Between 6-12 Character',
+                        keyboard: TextInputType.text,
+                      ).paddingForOnly(bottom: 30),
+
+                      FormInputWidget(
+                        fieldName: 'Confirm Password',
+                        onChanged: (value) {
+                          confirmPassword = value;
+                        },
+                        validation: (value) => (confirmPassword.isEmpty ||
+                           confirmPassword != password||password.length<6|| password.length>12 ),
+                        errorText: 'Enter Valid Password To Confirm',
+                        keyboard: TextInputType.text,
+                      ).paddingForOnly(bottom: 30),
+
+
                       OutlinedButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             print(name);
+                            print(email);
+                            print(phone);
+                            print(password);
+                            print(confirmPassword);
                             print('Submitted');
                           }
                         },
@@ -79,7 +133,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   )).paddingWithSymmetry(horizontal: 20)
             ],
           )).paddingWithSymmetry(horizontal: 10),
-          Image.asset('Assets/youthopia_white_flower.png').paddingForOnly(top: 20)
+          Image.asset('Assets/youthopia_white_flower.png')
+              .paddingForOnly(top: 20)
         ],
       ),
     ));
