@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
-
 import '../utils/colors.dart';
 
 class LoginScreen extends StatefulWidget {
