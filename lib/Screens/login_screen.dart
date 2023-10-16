@@ -47,7 +47,8 @@ class _LoginScreenState extends State<LoginScreen> {
                           email = value;
                         },
                         validation: (value) => (email.isEmpty ||
-                            !RegExp(r'^[A-Za-z ]+$').hasMatch(email)),
+                            !RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+                                .hasMatch(email)),
                         errorText: 'Enter Valid email',
                         keyboard: TextInputType.text,
                       ).paddingForOnly(bottom: 30),
