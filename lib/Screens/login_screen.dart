@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
+import 'package:youthopia/widgets/form_input_widget.dart';
+import 'package:youthopia/widgets/star_container.dart';
+import 'package:youthopia/widgets/youthopia_appbar.dart';
 import '../utils/colors.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -11,84 +14,67 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final key = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
+
+  String name = '';
+
   @override
   Widget build(BuildContext context) {
     return BackgroundScaffold(
-        child: Column(
-      children: [
-        SizedBox(
-          width: MediaQuery.of(context).size.width,
-          height: 80,
-        ),
-        Image.asset(
-          'Assets/youthopia_logo.png',
-          width: 200,
-          height: 65,
-          fit: BoxFit.cover,
-        ).paddingForOnly(bottom: 40),
-        Stack(
-          children: [
-            Container(
-              height: 400,
-              width: MediaQuery.of(context).size.width - 60,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(28),
-                  color: Colors.black.withOpacity(0.8)),
-              child: Form(
-                child: Column(
-                  children: [
-                    Text(
-                      'Email',
-                      style: TextStyle(color: CustomColors.white, fontSize: 15),
-                    ).paddingForOnly(top: 20),
-                    TextFormField(),
-                    Text(
-                      'Password',
-                      style: TextStyle(color: CustomColors.white, fontSize: 15),
-                    ).paddingForOnly(top: 20),
-                    TextFormField(),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Forgot Password?',
-                        style: TextStyle(
-                          color: CustomColors.white,
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: 200.0,
-                      height: 40.0,
-                      child: OutlinedButton(
-                        onPressed: () {},
+        child: SingleChildScrollView(
+      child: Column(
+        children: [
+          const YouthopiaAppbar().paddingForOnly(top: 20),
+          StarContainer(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Text(
+                'Log in to your Account',
+                style: TextStyle(
+                    color: CustomColors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25),
+              ).paddingForOnly(top: 20, left: 20, bottom: 50),
+              Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      OutlinedButton(
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            print(name);
+                            print('Submitted');
+                          }
+                        },
                         style: OutlinedButton.styleFrom(
                             backgroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0),
                             )),
-                        child: Text(
-                          'Login',
-                          style: TextStyle(
-                              color: CustomColors.black, fontSize: 20),
-                        ),
-                      ),
-                    ).paddingForOnly(top: 20),
-                  ],
-                ),
-              ),
-            ).paddingForOnly(top: 15, right: 15, left: 15),
-            Positioned(
-                top: 0,
-                right: 0,
-                child: Image.asset(
-                  'Assets/star.png',
-                  height: 50,
-                  width: 50,
-                )),
-          ],
-        )
-      ],
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'Next',
+                                style: TextStyle(
+                                    color: CustomColors.black, fontSize: 20),
+                              ).paddingForOnly(right: 10),
+                              const Icon(
+                                Icons.arrow_right_alt_sharp,
+                                color: CustomColors.black,
+                              )
+                            ]),
+                      ).paddingWithSymmetry(horizontal: 10, vertical: 20)
+                    ],
+                  )).paddingWithSymmetry(horizontal: 20)
+            ],
+          )).paddingWithSymmetry(horizontal: 10),
+          Image.asset('Assets/youthopia_white_flower.png')
+              .paddingForOnly(top: 20)
+        ],
+      ),
     ));
   }
 }
