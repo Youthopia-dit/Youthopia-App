@@ -1,20 +1,39 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 class LiveEventCard extends StatelessWidget {
-  const LiveEventCard({
+  LiveEventCard({
     super.key,
   });
+  final List<String> imagePaths = [
+    'Assets/Rectangle 1521 (1).png',
+    'Assets/Rectangle 1521 (1).png',
+    'Assets/Rectangle 1521 (1).png',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
         SizedBox(
-          height: 150,
           width: 300,
-          child: Image.asset(
-            'Assets/Rectangle 1521 (1).png',
-            fit: BoxFit.cover,
+          child: CarouselSlider(
+            items: imagePaths.map((imagePath) {
+              return Container(
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(imagePath),
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              );
+            }).toList(),
+            options: CarouselOptions(
+              height: 150,
+              enableInfiniteScroll: true,
+              autoPlay: true,
+            ),
           ),
         ),
         const Positioned(
