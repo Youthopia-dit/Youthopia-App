@@ -54,7 +54,6 @@ class CollegeScreen extends StatelessWidget {
           onPressed: () {},
           style: OutlinedButton.styleFrom(
               shape: RoundedRectangleBorder(
-            side: const BorderSide(color: CustomColors.black, width: 30.0),
             borderRadius: BorderRadius.circular(18.0),
           )),
           child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [

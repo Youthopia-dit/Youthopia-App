@@ -3,16 +3,17 @@ import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
 
 class EventInfo extends StatefulWidget {
-  const EventInfo({super.key, required this.time, required this.date,required this.venue, required this.fee});
+  const EventInfo(
+      {super.key,
+      required this.time,
+      required this.date,
+      required this.venue,
+      required this.fee});
   final String time;
-  // const EventInfo({super.key, required this.date});
   final String date;
-  // const EventInfo({super.key, required this.venue});
   final String venue;
 
   final String fee;
-
-
 
   @override
   State<EventInfo> createState() => _EventInfoState();
@@ -39,7 +40,10 @@ class _EventInfoState extends State<EventInfo> {
                   color: Colors.white,
                 ))
           ],
-        ).paddingForOnly(left: 50, top: 15,),
+        ).paddingForOnly(
+          left: 50,
+          top: 15,
+        ),
         Row(
           children: [
             Icon(

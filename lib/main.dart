@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/Screens/login_screen.dart';
+import 'package:youthopia/screens/college_screen.dart';
 import 'package:youthopia/screens/signup2_screen.dart';
 import 'Screens/signup_screen.dart';
-import 'package:youthopia/Screens/forms.dart';
-import 'Screens/aboutus.dart';
+import 'package:youthopia/Screens/form_screen.dart';
+import 'Screens/about_us_screen.dart';
 
 void main() {
   runApp(const MyApp());
