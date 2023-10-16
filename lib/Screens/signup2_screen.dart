@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:youthopia/Screens/login_screen.dart';
-import 'package:youthopia/Screens/signup2_screen.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
 import 'package:youthopia/widgets/rectangle_black.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+class SignUp2Page extends StatelessWidget {
+  const SignUp2Page({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +38,7 @@ class SignUpPage extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SignupHeading(),
+                        SignupHeading2(),
                         SizedBox(height: 65),
                         Center(
                           child: Container(
@@ -56,7 +54,7 @@ class SignUpPage extends StatelessWidget {
                                   padding:
                                       const EdgeInsets.fromLTRB(38, 0, 0, 0),
                                   child: Text(
-                                    'Name*',
+                                    'College*',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
@@ -100,7 +98,7 @@ class SignUpPage extends StatelessWidget {
                                   padding:
                                       const EdgeInsets.fromLTRB(38, 0, 0, 0),
                                   child: Text(
-                                    'Email*',
+                                    'Branch*',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
@@ -144,7 +142,7 @@ class SignUpPage extends StatelessWidget {
                                   padding:
                                       const EdgeInsets.fromLTRB(38, 0, 0, 0),
                                   child: Text(
-                                    'Phone*',
+                                    'Year*',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
@@ -188,7 +186,7 @@ class SignUpPage extends StatelessWidget {
                                   padding:
                                       const EdgeInsets.fromLTRB(38, 0, 0, 0),
                                   child: Text(
-                                    'Gender*',
+                                    'Password*',
                                     style: TextStyle(
                                       color: Colors.white,
                                     ),
@@ -224,12 +222,7 @@ class SignUpPage extends StatelessWidget {
                             width: 158,
                             child: ElevatedButton(
                               onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) => SignUp2Page(),
-                                    ) // Replace with your desired page
-                                    );
+                                //on pressed
                               },
                               style: ElevatedButton.styleFrom(
                                 primary:
@@ -286,7 +279,7 @@ class SignUpPage extends StatelessWidget {
   }
 }
 
-class SignupHeading extends StatelessWidget {
+class SignupHeading2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -315,7 +308,7 @@ class SignupHeading extends StatelessWidget {
                   child: Container(
                     color: Colors.transparent, // Color of the first container
                     child: Image.asset(
-                        'Assets/Group 6481.png'), // Add your image asset
+                        'Assets/Group 6481 (1).png'), // Add your image asset
                   ),
                 ),
                 Expanded(
