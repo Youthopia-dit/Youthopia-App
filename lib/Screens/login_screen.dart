@@ -17,6 +17,12 @@ class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
 
   String email = '';
+  String password = '';
+
+  bool isPasswordValid(String password) {
+    int minLength = 6;
+    return password.length >= minLength;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,17 +54,17 @@ class _LoginScreenState extends State<LoginScreen> {
                       FormInputWidget(
                         fieldName: 'Password',
                         onChanged: (value) {
-                          email = value;
+                          password = value;
                         },
-                        validation: (value) => (email.isEmpty ||
-                            !RegExp(r'^[A-Za-z ]+$').hasMatch(email)),
+                        validation: (value) =>
+                            (password.isEmpty || !isPasswordValid(password)),
                         errorText: 'Enter password',
                         keyboard: TextInputType.text,
                       ).paddingForOnly(bottom: 30),
                       OutlinedButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
-                            print(email);
+                            print(password);
                             print('Submitted');
                           }
                         },
@@ -85,7 +91,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   )).paddingWithSymmetry(horizontal: 20)
             ],
           )).paddingWithSymmetry(horizontal: 10),
-          Spacer(),
           Image.asset('Assets/youthopia_white_flower.png')
               .paddingForOnly(top: 20)
         ],
