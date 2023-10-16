@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
 import 'package:youthopia/widgets/form_input_widget.dart';
 import 'package:youthopia/widgets/star_container.dart';
 import 'package:youthopia/widgets/youthopia_appbar.dart';
+
 import '../utils/colors.dart';
+
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -16,7 +19,15 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
 
-  String name = '';
+
+  String email = '';
+  String password = '';
+
+  bool isPasswordValid(String password) {
+    int minLength = 6;
+    return password.length >= minLength;
+  }
+
 
   @override
   Widget build(BuildContext context) {
@@ -29,22 +40,37 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
-                'Log in to your Account',
-                style: TextStyle(
-                    color: CustomColors.white,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 25),
-              ).paddingForOnly(top: 20, left: 20, bottom: 50),
               Form(
                   key: formKey,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(height: 40),
+                      FormInputWidget(
+                        fieldName: 'Email',
+                        onChanged: (value) {
+                          email = value;
+                        },
+                        validation: (value) => (email.isEmpty ||
+                            !RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+                                .hasMatch(email)),
+                        errorText: 'Enter Valid email',
+                        keyboard: TextInputType.text,
+                      ).paddingForOnly(bottom: 30),
+                      FormInputWidget(
+                        fieldName: 'Password',
+                        onChanged: (value) {
+                          password = value;
+                        },
+                        validation: (value) =>
+                            (password.isEmpty || !isPasswordValid(password)),
+                        errorText: 'Enter password',
+                        keyboard: TextInputType.text,
+                      ).paddingForOnly(bottom: 30),
                       OutlinedButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
-                            print(name);
+                            print(password);
                             print('Submitted');
                           }
                         },
