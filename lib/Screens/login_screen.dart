@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
@@ -92,8 +94,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   )).paddingWithSymmetry(horizontal: 20)
             ],
           )).paddingWithSymmetry(horizontal: 10),
-          Image.asset('Assets/youthopia_white_flower.png')
-              .paddingForOnly(top: 20)
+          Container(
+            child: Image.asset('Assets/youthopia_white_flower.png')
+                .paddingForOnly(top: 20),
+          )
         ],
       ),
     ));
