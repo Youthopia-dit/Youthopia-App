@@ -34,4 +34,9 @@ extension WidgetExtensions on Widget {
         EdgeInsets.only(left: left, right: right, bottom: bottom, top: top),
         child: this,
       );
+
+    Align alignment({required Alignment align}) => Align(
+      alignment: align,
+      child: this,
+    );
 }

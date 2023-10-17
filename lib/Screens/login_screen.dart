@@ -8,6 +8,9 @@ import 'package:youthopia/widgets/form_input_widget.dart';
 import 'package:youthopia/widgets/star_container.dart';
 import 'package:youthopia/widgets/youthopia_appbar.dart';
 
+import '../utils/colors.dart';
+
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -18,6 +21,7 @@ class LoginScreen extends StatefulWidget {
 class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
 
+
   String email = '';
   String password = '';
 
@@ -25,6 +29,7 @@ class _LoginScreenState extends State<LoginScreen> {
     int minLength = 6;
     return password.length >= minLength;
   }
+
 
   @override
   Widget build(BuildContext context) {

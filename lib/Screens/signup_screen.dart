@@ -65,11 +65,48 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         keyboard: TextInputType.emailAddress,
                       ).paddingForOnly(bottom: 30),
 
+                      FormInputWidget(
+                        fieldName: 'Phone Number',
+                        onChanged: (value) {
+                          phone = value;
+                        },
+                        validation: (value) => (phone.isEmpty ||
+                            phone.length !=10),
+                        errorText: 'Enter Valid phone number',
+                        keyboard: TextInputType.text,
+                      ).paddingForOnly(bottom: 30),
+
+                      FormInputWidget(
+                        fieldName: 'PassWord',
+                        onChanged: (value) {
+                          password = value;
+                        },
+                        validation: (value) => (password.isEmpty ||
+                            password.length<6|| password.length>12),
+                        errorText: 'Enter Valid Password Between 6-12 Character',
+                        keyboard: TextInputType.text,
+                      ).paddingForOnly(bottom: 30),
+
+                      FormInputWidget(
+                        fieldName: 'Confirm Password',
+                        onChanged: (value) {
+                          confirmPassword = value;
+                        },
+                        validation: (value) => (confirmPassword.isEmpty ||
+                           confirmPassword != password||password.length<6|| password.length>12 ),
+                        errorText: 'Enter Valid Password To Confirm',
+                        keyboard: TextInputType.text,
+                      ).paddingForOnly(bottom: 30),
+
 
                       OutlinedButton(
                         onPressed: () {
                           if (formKey.currentState!.validate()) {
                             print(name);
+                            print(email);
+                            print(phone);
+                            print(password);
+                            print(confirmPassword);
                             print('Submitted');
                           }
                         },
