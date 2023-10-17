@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 
-class NoEvents extends StatelessWidget {
-  const NoEvents({super.key});
+class EmptyEventScreen extends StatelessWidget {
+  const EmptyEventScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +29,7 @@ class NoEvents extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18.0),
                 )),
             child: const Text(
-              'Register now event',
+              'Register now for event',
               style: TextStyle(color: CustomColors.black, fontSize: 20),
             ),
           ),

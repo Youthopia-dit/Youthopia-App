@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/data/backend.dart';
 import 'package:youthopia/screens/college_screen.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
@@ -15,12 +16,19 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+
     navigate();
     super.initState();
   }
 
+  Future<void> getData() async {
+    Api api = Api();
+    api.getEventDetails();
+  }
+
   void navigate() async {
     await Future.delayed(const Duration(seconds: 3));
+    await getData();
     Navigator.pushAndRemoveUntil(
         context,
         MaterialPageRoute(builder: (context) => CollegeScreen()),

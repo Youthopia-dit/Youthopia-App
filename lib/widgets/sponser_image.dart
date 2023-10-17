@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SponserImageWidget extends StatelessWidget {
+  const SponserImageWidget({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Column(
