@@ -135,7 +135,7 @@ class CustomBox extends StatelessWidget {
           onPressed: onPressed,
           child: Text(
             text,
-            style: TextStyle(fontSize: 15, color: Colors.white),
+            style: const TextStyle(fontSize: 15, color: CustomColors.white),
           ),
         ));
   }
