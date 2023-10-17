@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 20),
-          const LiveEventCard(),
+          LiveEventCard(),
           const SizedBox(
             height: 20,
           ),
