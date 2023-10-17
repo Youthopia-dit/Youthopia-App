@@ -1,22 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_container.dart';
-import 'package:youthopia/widgets/background_scaffold.dart';
 import 'package:youthopia/widgets/live_event_card.dart';
-import 'package:youthopia/widgets/sponser_image.dart';
 import 'package:youthopia/widgets/youthopia_appbar.dart';
 
 class HomeScreen extends StatelessWidget {
-  HomeScreen({
+  const HomeScreen({
     Key? key,
   }) : super(key: key);
-  List<String> sponsorImages = [
-    'Rectangle 12376.png',
-    'Rectangle 12376.png',
-    'Rectangle 12376.png',
-    'Rectangle 12376.png',
-    'Rectangle 12376.png',
-  ];
 
   @override
   Widget build(BuildContext context) {

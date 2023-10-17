@@ -8,6 +8,6 @@ class TestScreens extends StatelessWidget {
   Widget build(BuildContext context) {
     return BackgroundScaffold(child: SizedBox(
         width: MediaQuery.of(context).size.width,
-        child: NoEvents()));
+        child: EmptyEventScreen()));
   }
 }

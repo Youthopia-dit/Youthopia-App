@@ -41,7 +41,7 @@ class _EventListScreenState extends State<EventListScreen> {
                   nameOfEvent: "Name of event",
                   time: "10:00am",
                   venue: "hdfg",
-                );
+                ).paddingWithSymmetry(horizontal: 20, vertical: 2);
               })),
     );
   }
