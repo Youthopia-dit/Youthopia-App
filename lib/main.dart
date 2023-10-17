@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:youthopia/screens/form_screen.dart';
 import 'package:youthopia/screens/navigation_screen.dart';
-import 'package:youthopia/screens/profile_screen.dart';
 
 void main() {
   runApp(const MyApp());
