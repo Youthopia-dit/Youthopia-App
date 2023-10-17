@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/utils/colors.dart';
+import 'package:youthopia/utils/widget_extensions.dart';
 
 class LiveEventCard extends StatelessWidget {
   const LiveEventCard({
@@ -9,16 +11,18 @@ class LiveEventCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SizedBox(
-          height: 150,
+        ClipRRect(
+          borderRadius: BorderRadius.circular(20),
           child: Image.asset(
-            'Assets/Rectangle 1521 (1).png',
+            'Assets/fake_image.png',
+            alignment: Alignment.center,
             fit: BoxFit.cover,
+            color: CustomColors.black,
           ),
         ),
         const Positioned(
-          top: 5,
-          left: 5,
+          top: 10,
+          left: 10,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -50,17 +54,27 @@ class LiveEventCard extends StatelessWidget {
           ),
         ),
         const Positioned(
-          bottom: 5,
-          left: 5,
+          bottom: 10,
+          left: 10,
           child: Text(
             'Event Name',
             style: TextStyle(color: Colors.white),
           ),
         ),
         Positioned(
-          top: 5,
-          right: 5,
-          child: Image.asset('Assets/Frame 6418.png'),
+          top: 10,
+          right: 10,
+          child: Container(
+            decoration: BoxDecoration(
+                color: CustomColors.red,
+                shape: BoxShape.rectangle,
+                borderRadius: BorderRadius.circular(8)),
+            child: const Text(
+              'LIVE',
+              style: TextStyle(
+                  color: CustomColors.white, fontWeight: FontWeight.bold),
+            ).paddingWithSymmetry(horizontal: 8, vertical: 8),
+          ),
         ),
       ],
     );

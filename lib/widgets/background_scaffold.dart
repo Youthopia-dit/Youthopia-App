@@ -7,6 +7,8 @@ class BackgroundScaffold extends StatelessWidget {
   final SliverAppBar? appBar;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: BackgroundContainer(child: child));
+    return Scaffold(
+        resizeToAvoidBottomInset: false,
+        body: BackgroundContainer(child: child));
   }
 }
