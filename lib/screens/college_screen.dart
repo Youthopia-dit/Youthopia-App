@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/screens/navigation_screen.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
@@ -51,7 +52,9 @@ class CollegeScreen extends StatelessWidget {
         width: 300.0,
         height: 40.0,
         child: OutlinedButton(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNavbar()));
+          },
           style: OutlinedButton.styleFrom(
               shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(18.0),

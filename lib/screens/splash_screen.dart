@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/data/backend.dart';
+import 'package:youthopia/data/data_instance.dart';
+import 'package:youthopia/data/models/request_status.dart';
 import 'package:youthopia/screens/college_screen.dart';
 import 'package:youthopia/utils/colors.dart';
+import 'package:youthopia/utils/snackbar.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
 import 'package:youthopia/widgets/logo_widget.dart';
@@ -16,23 +19,33 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-
     navigate();
     super.initState();
   }
 
-  Future<void> getData() async {
+  Future<bool> getEventsData() async {
     Api api = Api();
-    api.getEventDetails();
+    final response = await api.getEventDetails();
+    if (response.status == RequestStatus.FAILURE) {
+      ShowSnackBar.snack(context,
+          title: 'An Error Occurred!',
+          message: response.message ?? '',
+          type: 'failure');
+      return false;
+    } else {
+      Data.eventList = response.body!;
+      return true;
+    }
   }
 
   void navigate() async {
     await Future.delayed(const Duration(seconds: 3));
-    await getData();
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(builder: (context) => CollegeScreen()),
-        (route) => false);
+    if(await getEventsData()) {
+      Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => CollegeScreen()),
+              (route) => false);
+    }
   }
 
   @override

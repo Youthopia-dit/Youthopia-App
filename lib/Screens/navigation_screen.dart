@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
+import 'package:youthopia/data/data_instance.dart';
 import 'package:youthopia/screens/home_screen.dart';
 //import 'package:youthopia/screens/empty_screen.dart';
 import 'package:youthopia/screens/profile_screen.dart';
@@ -19,8 +20,8 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
   int _selectedIndex = 0;
   static final List<Widget> _list = <Widget>[
     HomeScreen(),
-    EventListScreen(),
-    EventListScreen(type: "my",),
+    EventListScreen(eventList: Data.eventList,),
+    EventListScreen(type: "my", eventList: [],),
     ProfileScreen()
   ];
 
