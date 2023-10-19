@@ -7,6 +7,7 @@ class ShowSnackBar {
     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
       behavior: SnackBarBehavior.floating,
         elevation: 0,
+        backgroundColor: Colors.transparent,
         content: AwesomeSnackbarContent(
       title: title,
       message: message,

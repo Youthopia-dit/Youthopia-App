@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_glow/flutter_glow.dart';
 import 'package:youthopia/data/data_instance.dart';
 import 'package:youthopia/screens/home_screen.dart';
-//import 'package:youthopia/screens/empty_screen.dart';
 import 'package:youthopia/screens/profile_screen.dart';
 import 'package:youthopia/utils/colors.dart';
-
 import 'event_list_screen.dart';
 
 class BottomNavbar extends StatefulWidget {
@@ -19,10 +17,10 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
   bool isProcessing = true;
   int _selectedIndex = 0;
   static final List<Widget> _list = <Widget>[
-    HomeScreen(),
+    const HomeScreen(),
     EventListScreen(eventList: Data.eventList,),
     EventListScreen(type: "my", eventList: [],),
-    ProfileScreen()
+    const ProfileScreen()
   ];
 
   void _onItemTapped(int index) {

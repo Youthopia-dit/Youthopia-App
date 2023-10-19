@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/data/models/event_model.dart';
 import 'package:youthopia/screens/single_event_screen.dart';
+import 'package:youthopia/utils/common_utils.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/black_container.dart';
 import '../utils/colors.dart';
@@ -19,7 +20,7 @@ class EventContainer extends StatelessWidget {
       child: BlackContainer(
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
               child: Column(
@@ -34,7 +35,7 @@ class EventContainer extends StatelessWidget {
                         fontWeight: FontWeight.bold),
                   ).paddingForOnly(top: 15),
                   Text(
-                    "Time: ${event.endTime}",
+                    "Date: ${CommonUtils.getDate(event.date)}",
                     style: const TextStyle(
                         fontSize: 18, color: CustomColors.Grey1),
                   ).paddingForOnly(top: 5, left: 5),
@@ -48,27 +49,25 @@ class EventContainer extends StatelessWidget {
                 ],
               ),
             ),
-            Expanded(
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.network(
-                  event.poster,
-                  errorBuilder: (context, exception, stacktrace) {
-                    return Image.asset(
-                      'Assets/fake_image.png',
-                      alignment: Alignment.center,
-                      height: 100,
-                      width: 150,
-                      fit: BoxFit.cover,
-                    );
-                  },
-                  alignment: Alignment.center,
-                  height: 100,
-                  width: 150,
-                  fit: BoxFit.cover,
-                ),
-              ).paddingForAll(4),
-            )
+            ClipRRect(
+              borderRadius: BorderRadius.circular(20),
+              child: Image.network(
+                event.poster,
+                errorBuilder: (context, exception, stacktrace) {
+                  return Image.asset(
+                    'Assets/fake_image.png',
+                    alignment: Alignment.center,
+                    height: 100,
+                    width: 150,
+                    fit: BoxFit.cover,
+                  );
+                },
+                alignment: Alignment.center,
+                height: 100,
+                width: 150,
+                fit: BoxFit.cover,
+              ),
+            ).paddingForAll(4).alignment(align: Alignment.center)
           ],
         ).paddingForAll(10),
       ),

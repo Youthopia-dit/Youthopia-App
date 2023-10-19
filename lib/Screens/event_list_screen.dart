@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/data/models/event_model.dart';
-
-import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_container.dart';
-import 'package:youthopia/widgets/background_scaffold.dart';
 import 'package:youthopia/widgets/youthopia_appbar.dart';
 import 'package:youthopia/widgets/youthopia_search_bar.dart';
-
 import '../widgets/empty_events.dart';
 import '../widgets/event_container.dart';
 
@@ -35,10 +31,10 @@ class _EventListScreenState extends State<EventListScreen> {
                   }
                   return const YouthopiaSearchBar();
                 }
-                if(widget.eventList.isEmpty) {
-                  return EmptyEventScreen();
+                if (widget.eventList.isEmpty) {
+                  return const EmptyEventScreen();
                 }
-                if(index == widget.eventList.length + 1) {
+                if (index >= widget.eventList.length) {
                   return const SizedBox(
                     height: 20,
                   );

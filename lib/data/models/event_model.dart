@@ -39,7 +39,6 @@ class EventDetails {
       required this.category});
 
   factory EventDetails.fromMap(Map<String, dynamic> map) {
-    print(map);
     List<Coordinators> coord = [];
     List<Coordinators> heads = [];
     map['coordinator']
@@ -70,8 +69,8 @@ class EventDetails {
       startTime: map['start_time'],
       endTime: map['end_time'],
       bots: bots,
-      participantMin: map['participant_min'] ?? 1,
-      participantMax: map['participant_max'] ?? 1,
+      participantMin: map['participant_min'] ,
+      participantMax: map['participant_max'] ,
       eventId: map['event_id'],
       clubName: map['club_name'],
       category: map['category'],
