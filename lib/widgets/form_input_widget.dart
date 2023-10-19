@@ -30,8 +30,8 @@ class FormInputWidget extends StatelessWidget {
           style: const TextStyle(
               color: CustomColors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 18),
-        ).paddingForOnly(bottom: 10),
+              fontSize: 16),
+        ).paddingForOnly(bottom: 6),
         TextFormField(
             obscureText: obscureText,
             keyboardType: keyboard,
