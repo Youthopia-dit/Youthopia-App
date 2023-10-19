@@ -17,7 +17,7 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
   Widget build(BuildContext context) {
     // print(widget.eventDetails.description);
     return BackgroundScaffold(
-      child: ListView(children: [
+      child: ListView(physics: BouncingScrollPhysics(), children: [
         YouthopiaAppbar(),
         ClipRRect(
           borderRadius: BorderRadius.circular(20),
@@ -37,7 +37,7 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
             width: 350,
             fit: BoxFit.cover,
           ),
-        ).paddingForOnly(top:20,bottom:20,left:30,right: 30),
+        ).paddingForOnly(top: 20, bottom: 20, left: 30, right: 30),
         Row(
           children: [
             Text(widget.eventDetails.eventName,
@@ -57,7 +57,8 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
               size: 15,
               color: Colors.white,
             ).paddingForOnly(left: 50, top: 15, right: 5),
-            Text(widget.eventDetails.startTime,
+            Text(
+                "${widget.eventDetails.startTime} - ${widget.eventDetails.endTime}",
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.white,
@@ -99,7 +100,7 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
               size: 15,
               color: Colors.white,
             ).paddingForOnly(left: 50, top: 15, right: 5),
-            Text("${widget.eventDetails.feesdit} for DIT students"  ,
+            Text("${widget.eventDetails.feesdit} for DIT students",
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.white,
@@ -113,14 +114,13 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
               size: 15,
               color: Colors.white,
             ).paddingForOnly(left: 50, top: 15, right: 5),
-            Text("${widget.eventDetails.feesnondit} for non-DIT students" ,
+            Text("${widget.eventDetails.feesnondit} for non-DIT students",
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.white,
                 )).paddingForOnly(top: 15),
           ],
         ),
-
         Row(children: [
           Text("Discription",
               style: TextStyle(
@@ -129,14 +129,35 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
               )),
         ]).paddingForOnly(left: 50, top: 15, right: 5),
         Row(children: [
-          SizedBox(height: 300,width: 300,
+          SizedBox(
+            width: 300,
             child: Text(widget.eventDetails.description,
                 style: TextStyle(
                   fontSize: 20,
                   color: Colors.white,
                 )),
           )
-        ]).paddingForOnly(left: 50, top: 10, right: 5,bottom: 10),
+        ]).paddingForOnly(left: 50, top: 10, right: 5, bottom: 10),
+        Row(children: [
+          Text("Rules",
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.white,
+              )),
+        ]).paddingForOnly(left: 50, top: 15, right: 5),
+        Row(children: [
+          ListView.builder(
+              shrinkWrap: true,
+              physics: ClampingScrollPhysics(),
+              itemCount: widget.eventDetails.rules.length,
+              itemBuilder: (context, index) {
+                return Text(widget.eventDetails.rules[index],
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Colors.white,
+                    ));
+              })
+        ]).paddingForOnly(left: 50, top: 10, right: 5, bottom: 10),
         SizedBox(
           width: 300.0,
           height: 40.0,
@@ -159,7 +180,7 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
             ]),
           ),
         ).paddingForOnly(top: 20),
-      ]).paddingForOnly(top: 10,bottom: 40),
+      ]).paddingForOnly(top: 10, bottom: 40),
     );
   }
 }
