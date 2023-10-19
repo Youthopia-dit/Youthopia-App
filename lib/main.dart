@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/Screens/signup2_screen.dart';
 import 'package:youthopia/screens/navigation_screen.dart';
 import 'package:youthopia/screens/signup2_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
