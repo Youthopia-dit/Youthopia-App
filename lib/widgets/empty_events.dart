@@ -25,11 +25,6 @@ class EmptyEventScreen extends StatelessWidget {
           height: 40.0,
           child: OutlinedButton(
             onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => FormScreen()),
-                  (route) => false);
-
             },
             style: OutlinedButton.styleFrom(
                 backgroundColor: Colors.white,
