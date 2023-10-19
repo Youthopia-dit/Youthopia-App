@@ -67,6 +67,13 @@ class Auth {
     }
   }
 
+  Future<RequestStatus<UserDetails?>> getUserDetails() async {
+    String? token = await getToken();
+    Api api = Api();
+    final response = await api.getUserDetails(token: token!);
+    return response;
+  }
+
   void saveToken(String token) async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     await pref.setString('token', token);

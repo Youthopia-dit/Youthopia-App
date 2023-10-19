@@ -50,6 +50,34 @@ class Api {
     return imageUrl;
   }
 
+  Future<RequestStatus<UserDetails?>> getUserDetails(
+      {required String token}) async {
+    final url = Uri.https(baseUrl, '/user/getuser');
+    try {
+      final header = {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer $token"
+      };
+      final response = await http.get(url, headers: header);
+      print(response.body);
+      print(response.statusCode);
+      final res = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        return RequestStatus(
+            status: RequestStatus.SUCCESS,
+            body: UserDetails.fromMap(res['details'][0]));
+      } else {
+        return RequestStatus(
+            status: RequestStatus.FAILURE, message: res['message']);
+      }
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+      return RequestStatus(
+          status: RequestStatus.FAILURE,
+          message: 'Some Error Occured!. Please Try again Later!!');
+    }
+  }
+
   Future<RequestStatus<UserDetails?>> signup(
       {required String name,
       required String email,

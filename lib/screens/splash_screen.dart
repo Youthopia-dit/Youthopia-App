@@ -45,11 +45,21 @@ class _SplashScreenState extends State<SplashScreen> {
     if (await getEventsData()) {
       Auth auth = Auth();
       if (await auth.getToken() != null) {
+        final response = await auth.getUserDetails();
+        if(response.status == RequestStatus.SUCCESS) {
+          Data.user = response.body!;
+          Navigator.pushAndRemoveUntil(
+              context,
+              MaterialPageRoute(builder: (context) => BottomNavbar()),
+                  (route) => false);
+        } else {
+          ShowSnackBar.snack(context,
+              title: 'An Error Occurred!',
+              message: response.message ?? '',
+              type: 'failure');
+        }
         print('test');
-        Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => BottomNavbar()),
-            (route) => false);
+
       } else {
         Navigator.pushAndRemoveUntil(
             context,

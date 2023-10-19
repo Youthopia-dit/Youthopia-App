@@ -51,7 +51,7 @@ class EventDetails {
     for (String r in map['rules']) {
       rules.add(r);
     }
-
+    print(map);
     for (String b in map['bots']) {
       bots.add(b);
     }
