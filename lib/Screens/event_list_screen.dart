@@ -23,30 +23,25 @@ class _EventListScreenState extends State<EventListScreen> {
       child: BackgroundContainer(
           child: ListView.builder(
               physics: const BouncingScrollPhysics(),
-              itemCount: widget.eventList.length,
+              itemCount: widget.eventList.length + 2,
               itemBuilder: (context, index) {
-                print(index);
-                // if (index == 0) {
-                //   if (widget.type == "my") {
-                //     return const YouthopiaAppbar();
-                //   }
-                //   return const YouthopiaSearchBar();
-                // }
+                if (index == 0) {
+                  if (widget.type == "my") {
+                    return const YouthopiaAppbar();
+                  }
+                  return const YouthopiaSearchBar();
+                }
                 if (widget.eventList.isEmpty) {
                   return const EmptyEventScreen();
                 }
-                print(widget.eventList[index].eventName);
-                // if (index >= widget.eventList.length) {
-                //   return const SizedBox(
-                //     height: 20,
-                //   );
-                // } else {
-
-                  return EventContainer(
-                    key: GlobalKey(),
-                    event: widget.eventList[index],
-                  ).paddingWithSymmetry(horizontal: 20, vertical: 2);
-                // }
+                if (index >= widget.eventList.length) {
+                  return const SizedBox(
+                    height: 20,
+                  );
+                }
+                return EventContainer(
+                  event: widget.eventList[index - 1],
+                ).paddingWithSymmetry(horizontal: 20, vertical: 2);
               })),
     );
   }
