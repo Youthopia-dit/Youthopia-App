@@ -12,6 +12,7 @@ class IndRegForm extends StatefulWidget {
 
 class _IndRegFormState extends State<IndRegForm> {
   String name = '';
+  String id = '';
   final formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -29,8 +30,8 @@ class _IndRegFormState extends State<IndRegForm> {
                   errorText: 'Enter Valid Name',
                   keyboard: TextInputType.text)
               .paddingForOnly(bottom: 20),
-              FormInputWidget(
-                  fieldName: 'Leader\'s ID',
+          FormInputWidget(
+                  fieldName: 'User\'s ID',
                   onChanged: (value) {
                     id = value;
                   },
