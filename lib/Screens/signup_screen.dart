@@ -1,323 +1,142 @@
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
-import 'package:youthopia/widgets/rectangle_black.dart';
+import 'package:youthopia/widgets/form_input_widget.dart';
+import 'package:youthopia/widgets/star_container.dart';
+import 'package:youthopia/widgets/youthopia_appbar.dart';
 
-class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+import '../widgets/sign_up_heading.dart';
+
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: BackgroundScaffold(
-            child: Center(
-                child: Column(
-          children: [
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 40, 20, 0),
-                child: Container(
-                  height: 60,
-                  width: 185,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                          'Assets/youthopia_logo2.png'), // Replace with your image asset path
-                      fit: BoxFit.cover, // Adjust the fit type as needed
-                    ),
-                  ),
-                ),
-              ),
-            ),
-            InkWellRectangle(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SignupHeading(),
-                  SizedBox(height: 65),
-                  Center(
-                    child: Container(
-                      width: 300,
-                      height: 20.0,
-                      color: Colors.transparent, // Transparent background
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 8.0), // Adjust left padding as needed
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(38, 0, 0, 0),
-                            child: Text(
-                              'Your Text Here',
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Container(
-                      width: 209.0, // Set the width to 209
-                      height: 36.0, // Set the height to 36
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(28))),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Center(
-                    child: Container(
-                      width: 300,
-                      height: 20.0,
-                      color: Colors.transparent, // Transparent background
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 8.0), // Adjust left padding as needed
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(38, 0, 0, 0),
-                            child: Text(
-                              'Your Text Here',
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Container(
-                      width: 209.0, // Set the width to 209
-                      height: 36.0, // Set the height to 36
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(28))),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Center(
-                    child: Container(
-                      width: 300,
-                      height: 20.0,
-                      color: Colors.transparent, // Transparent background
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 8.0), // Adjust left padding as needed
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(38, 0, 0, 0),
-                            child: Text(
-                              'Your Text Here',
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Container(
-                      width: 209.0, // Set the width to 209
-                      height: 36.0, // Set the height to 36
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(28))),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 10),
-                  Center(
-                    child: Container(
-                      width: 300,
-                      height: 20.0,
-                      color: Colors.transparent, // Transparent background
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Padding(
-                          padding: const EdgeInsets.only(
-                              left: 8.0), // Adjust left padding as needed
-                          child: Padding(
-                            padding: const EdgeInsets.fromLTRB(38, 0, 0, 0),
-                            child: Text(
-                              'Your Text Here',
-                              style: TextStyle(
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                  Center(
-                    child: Container(
-                      width: 209.0, // Set the width to 209
-                      height: 36.0, // Set the height to 36
-                      child: TextFormField(
-                        decoration: InputDecoration(
-                            fillColor: Colors.white,
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(color: Colors.white),
-                            ),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(28))),
-                      ),
-                    ),
-                  ),
-                  SizedBox(height: 30),
-                  Center(
-                    child: Container(
-                      height: 27,
-                      width: 158,
-                      child: ElevatedButton(
-                        onPressed: () {
-                          //on pressed
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.white, // Button background color
-                          shape: RoundedRectangleBorder(
-                            borderRadius:
-                                BorderRadius.circular(29.0), // Rounded corners
-                          ),
-                        ),
-                        child: Text(
-                          'Next',
-                          style: TextStyle(
-                            color: Colors.black, // Text color
-                            fontSize: 13.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            Center(
-              child: Padding(
-                padding: const EdgeInsets.fromLTRB(20, 20, 20, 0),
-                child: Container(
-                  height: 40,
-                  width: 40,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: AssetImage(
-                          'Assets/youthopia_white_flower.png'), // Replace with your image asset path
-                      fit: BoxFit.cover, // Adjust the fit type as needed
-                    ),
-                  ),
-                ),
-              ),
-            ),
-          ],
-        ))),
-      ),
-    );
-  }
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class SignupHeading extends StatelessWidget {
+class _SignUpScreenState extends State<SignUpScreen> {
+  final formKey = GlobalKey<FormState>();
+
+  String name = '';
+  String email = '';
+  String phone = '';
+  String password = '';
+  String confirmPassword = '';
+
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.fromLTRB(20, 0, 20, 0),
+    return BackgroundScaffold(
+        child: SingleChildScrollView(
       child: Column(
-        children: <Widget>[
-          Container(
-            height: MediaQuery.of(context).size.height / 13,
-            color: Colors.transparent, // Changed color to transparent
-            child: Center(
-              child: Text(
-                'Sign Up', // Added "Sign Up" text
-                style: TextStyle(
-                  fontSize: 20.0, // Changed font size
-                  color: Colors.white, // Changed text color to white
-                ),
+        children: [
+          const YouthopiaAppbar().paddingForOnly(top: 20),
+          StarContainer(
+              child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SignupHeading(
+                index: 1,
               ),
-            ),
-          ),
-          Container(
-            height: MediaQuery.of(context).size.height / 13,
-            color: Colors.transparent, // Changed color to transparent
-            child: Column(
-              children: [
-                Expanded(
-                  child: Container(
-                    color: Colors.transparent, // Color of the first container
-                    child: Image.asset(
-                        'Assets/Group 6481.png'), // Add your image asset
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                      child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Form(
+                  key: formKey,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 16.0),
-                        child: Text(
-                          'Personal',
-                          style: TextStyle(
-                              color: Colors.white), // Text color white
-                        ),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 16.0),
-                        child: Text(
-                          'University',
-                          style: TextStyle(
-                              color: Colors.white), // Text color white
-                        ),
-                      ),
+                      FormInputWidget(
+                        fieldName: 'Name',
+                        onChanged: (value) {
+                          name = value;
+                        },
+                        validation: (value) => (name.isEmpty ||
+                            !RegExp(r'^[A-Za-z ]+$').hasMatch(name)),
+                        errorText: 'Enter Valid Name',
+                        keyboard: TextInputType.text,
+                      ).paddingForOnly(bottom: 30),
+                      FormInputWidget(
+                        fieldName: 'Email',
+                        onChanged: (value) {
+                          email = value;
+                        },
+                        validation: (value) =>
+                            (!EmailValidator.validate(email) || email.isEmpty),
+                        errorText: 'Enter Valid Email',
+                        keyboard: TextInputType.emailAddress,
+                      ).paddingForOnly(bottom: 30),
+
+                      FormInputWidget(
+                        fieldName: 'Phone Number',
+                        onChanged: (value) {
+                          phone = value;
+                        },
+                        validation: (value) => (phone.isEmpty ||
+                            phone.length !=10),
+                        errorText: 'Enter Valid phone number',
+                        keyboard: TextInputType.text,
+                      ).paddingForOnly(bottom: 30),
+
+                      FormInputWidget(
+                        fieldName: 'PassWord',
+                        onChanged: (value) {
+                          password = value;
+                        },
+                        validation: (value) => (password.isEmpty ||
+                            password.length<6|| password.length>12),
+                        errorText: 'Enter Valid Password Between 6-12 Character',
+                        keyboard: TextInputType.text,
+                      ).paddingForOnly(bottom: 30),
+
+                      FormInputWidget(
+                        fieldName: 'Confirm Password',
+                        onChanged: (value) {
+                          confirmPassword = value;
+                        },
+                        validation: (value) => (confirmPassword.isEmpty ||
+                           confirmPassword != password||password.length<6|| password.length>12 ),
+                        errorText: 'Enter Valid Password To Confirm',
+                        keyboard: TextInputType.text,
+                      ).paddingForOnly(bottom: 30),
+
+
+                      OutlinedButton(
+                        onPressed: () {
+                          if (formKey.currentState!.validate()) {
+                            print(name);
+                            print(email);
+                            print(phone);
+                            print(password);
+                            print(confirmPassword);
+                            print('Submitted');
+                          }
+                        },
+                        style: OutlinedButton.styleFrom(
+                            backgroundColor: Colors.white,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(18.0),
+                            )),
+                        child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              const Text(
+                                'Next',
+                                style: TextStyle(
+                                    color: CustomColors.black, fontSize: 20),
+                              ).paddingForOnly(right: 10),
+                              const Icon(
+                                Icons.arrow_right_alt_sharp,
+                                color: CustomColors.black,
+                              )
+                            ]),
+                      ).paddingWithSymmetry(horizontal: 10, vertical: 20)
                     ],
-                  ) // Color of the second container
-                      ),
-                ),
-              ],
-            ),
-          ),
+                  )).paddingWithSymmetry(horizontal: 20)
+            ],
+          )).paddingWithSymmetry(horizontal: 10),
+          Image.asset('Assets/youthopia_white_flower.png')
+              .paddingForOnly(top: 20)
         ],
       ),
-    );
+    ));
   }
 }
