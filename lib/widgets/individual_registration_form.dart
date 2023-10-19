@@ -29,6 +29,15 @@ class _IndRegFormState extends State<IndRegForm> {
                   errorText: 'Enter Valid Name',
                   keyboard: TextInputType.text)
               .paddingForOnly(bottom: 20),
+              FormInputWidget(
+                  fieldName: 'Leader\'s ID',
+                  onChanged: (value) {
+                    id = value;
+                  },
+                  validation: (value) => value.isNotEmpty,
+                  errorText: 'ID cannot be empty',
+                  keyboard: TextInputType.number)
+              .paddingForOnly(bottom: 20),
           OutlinedButton(
             onPressed: () {
               if (formKey.currentState!.validate()) {
