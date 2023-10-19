@@ -16,6 +16,7 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
   @override
   Widget build(BuildContext context) {
     // print(widget.eventDetails.description);
+    print( widget.eventDetails.rules[0]);
     return BackgroundScaffold(
       child: ListView(physics: BouncingScrollPhysics(), children: [
         YouthopiaAppbar(),
@@ -145,19 +146,38 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
                 color: Colors.white,
               )),
         ]).paddingForOnly(left: 50, top: 15, right: 5),
-        Row(children: [
-          ListView.builder(
-              shrinkWrap: true,
-              physics: ClampingScrollPhysics(),
-              itemCount: widget.eventDetails.rules.length,
-              itemBuilder: (context, index) {
-                return Text(widget.eventDetails.rules[index],
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                    ));
-              })
-        ]).paddingForOnly(left: 50, top: 10, right: 5, bottom: 10),
+        ListView.builder(
+            shrinkWrap: true,
+            physics: ClampingScrollPhysics(),
+            itemCount: widget.eventDetails.rules.length,
+            itemBuilder: (context, index) {
+              return Text(widget.eventDetails.rules[index],
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  )).paddingForOnly(left: 40,right:40);
+            }),
+
+        widget.eventDetails.bots.isEmpty ? SizedBox(): Row(children: [
+          Text("Bots ",
+              style: TextStyle(
+                fontSize: 30,
+                color: Colors.white,
+              )),
+        ]).paddingForOnly(left: 50, top: 15, right: 5),
+        ListView.builder(
+            shrinkWrap: true,
+            physics: ClampingScrollPhysics(),
+            itemCount: widget.eventDetails.bots.length,
+            itemBuilder: (context, index) {
+              return Text(widget.eventDetails.bots[index],
+                  style: TextStyle(
+                    fontSize: 20,
+                    color: Colors.white,
+                  )).paddingForOnly(left: 40,right:40);
+            }),
+
+
         SizedBox(
           width: 300.0,
           height: 40.0,
