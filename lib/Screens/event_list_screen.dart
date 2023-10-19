@@ -39,6 +39,7 @@ class _EventListScreenState extends State<EventListScreen> {
                     height: 20,
                   );
                 }
+
                 return EventContainer(
                   event: widget.eventList[index - 1],
                 ).paddingWithSymmetry(horizontal: 20, vertical: 2);
