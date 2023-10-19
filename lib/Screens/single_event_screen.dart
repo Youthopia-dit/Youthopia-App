@@ -124,7 +124,7 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
           ],
         ),
         Row(children: [
-          Text("Discription",
+          Text("Description",
               style: TextStyle(
                 fontSize: 30,
                 color: Colors.white,
@@ -183,10 +183,10 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
           height: 40.0,
           child: OutlinedButton(
             onPressed: () {
-              Navigator.pushAndRemoveUntil(
-                  context,
-                  MaterialPageRoute(builder: (context) => FormScreen()),
-                  (route) => false);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FormScreen()),
+              );
             },
             style: OutlinedButton.styleFrom(
                 backgroundColor: Colors.white,
