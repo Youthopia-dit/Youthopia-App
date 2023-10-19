@@ -26,8 +26,8 @@ class FormInputWidget extends StatelessWidget {
           style: const TextStyle(
               color: CustomColors.white,
               fontWeight: FontWeight.bold,
-              fontSize: 18),
-        ).paddingForOnly(bottom: 10),
+              fontSize: 16),
+        ).paddingForOnly(bottom: 6),
         TextFormField(
             keyboardType: keyboard,
             onChanged: (value) => onChanged(value),
@@ -53,7 +53,8 @@ class FormInputWidget extends StatelessWidget {
                         const BorderSide(color: CustomColors.white, width: 2)),
                 errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
-                    borderSide: const BorderSide(color: CustomColors.red, width: 2))))
+                    borderSide:
+                        const BorderSide(color: CustomColors.red, width: 2))))
       ],
     );
   }
