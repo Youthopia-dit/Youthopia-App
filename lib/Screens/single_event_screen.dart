@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/Screens/form_screen.dart';
 import 'package:youthopia/data/models/event_model.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
@@ -16,7 +17,7 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
   @override
   Widget build(BuildContext context) {
     // print(widget.eventDetails.description);
-    print( widget.eventDetails.rules[0]);
+    print(widget.eventDetails.rules[0]);
     return BackgroundScaffold(
       child: ListView(physics: BouncingScrollPhysics(), children: [
         YouthopiaAppbar(),
@@ -123,7 +124,7 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
           ],
         ),
         Row(children: [
-          Text("Discription",
+          Text("Description",
               style: TextStyle(
                 fontSize: 30,
                 color: Colors.white,
@@ -155,16 +156,17 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
-                  )).paddingForOnly(left: 40,right:40);
+                  )).paddingForOnly(left: 40, right: 40);
             }),
-
-        widget.eventDetails.bots.isEmpty ? SizedBox(): Row(children: [
-          Text("Bots ",
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.white,
-              )),
-        ]).paddingForOnly(left: 50, top: 15, right: 5),
+        widget.eventDetails.bots.isEmpty
+            ? SizedBox()
+            : Row(children: [
+                Text("Bots ",
+                    style: TextStyle(
+                      fontSize: 30,
+                      color: Colors.white,
+                    )),
+              ]).paddingForOnly(left: 50, top: 15, right: 5),
         ListView.builder(
             shrinkWrap: true,
             physics: ClampingScrollPhysics(),
@@ -174,15 +176,18 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
                   style: TextStyle(
                     fontSize: 20,
                     color: Colors.white,
-                  )).paddingForOnly(left: 40,right:40);
+                  )).paddingForOnly(left: 40, right: 40);
             }),
-
-
         SizedBox(
           width: 300.0,
           height: 40.0,
           child: OutlinedButton(
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => FormScreen()),
+              );
+            },
             style: OutlinedButton.styleFrom(
                 backgroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
