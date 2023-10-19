@@ -1,23 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 
 class LiveEventCard extends StatelessWidget {
-  const LiveEventCard({
+  LiveEventCard({
     super.key,
   });
+  final List<String> imagePaths = [
+    'Assets/Rectangle 1521 (1).png',
+    'Assets/Rectangle 1521 (1).png',
+    'Assets/Rectangle 1521 (1).png',
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(20),
-          child: Image.asset(
-            'Assets/fake_image.png',
-            alignment: Alignment.center,
-            fit: BoxFit.cover,
-            color: CustomColors.black,
+        SizedBox(
+          width: 400,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'Assets/fake_image.png',
+              alignment: Alignment.center,
+              fit: BoxFit.cover,
+              color: CustomColors.black,
+            ),
           ),
         ),
         const Positioned(
@@ -38,27 +47,35 @@ class LiveEventCard extends StatelessWidget {
                   ),
                 ],
               ),
-              Row(
+            ],
+          ),
+        ),
+        Positioned(
+          bottom: 10,
+          left: 10,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const Row(
                 children: [
                   Icon(
                     Icons.calendar_today,
                     color: Colors.white,
+                  ),
+                  SizedBox(
+                    width: 2,
                   ),
                   Text(
                     'Date',
                     style: TextStyle(color: Colors.white),
                   ),
                 ],
+              ).paddingForOnly(bottom: 10),
+              const Text(
+                'Event Name',
+                style: TextStyle(color: Colors.white),
               ),
             ],
-          ),
-        ),
-        const Positioned(
-          bottom: 10,
-          left: 10,
-          child: Text(
-            'Event Name',
-            style: TextStyle(color: Colors.white),
           ),
         ),
         Positioned(

@@ -1,25 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/data/models/event_model.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
 
-class EventInfo extends StatefulWidget {
-  const EventInfo(
-      {super.key,
-      required this.time,
-      required this.date,
-      required this.venue,
-      required this.fee});
-  final String time;
-  final String date;
-  final String venue;
-
-  final String fee;
+class SingleEventScreen extends StatefulWidget {
+  const SingleEventScreen({super.key, required this.eventDetails});
+  final EventDetails eventDetails;
 
   @override
-  State<EventInfo> createState() => _EventInfoState();
+  State<SingleEventScreen> createState() => _SingleEventScreenState();
 }
 
-class _EventInfoState extends State<EventInfo> {
+class _SingleEventScreenState extends State<SingleEventScreen> {
   @override
   Widget build(BuildContext context) {
     return BackgroundScaffold(
@@ -51,7 +43,7 @@ class _EventInfoState extends State<EventInfo> {
               size: 15,
               color: Colors.white,
             ).paddingForOnly(left: 50, top: 15, right: 5),
-            Text(widget.time,
+            Text(widget.eventDetails.startTime,
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.white,

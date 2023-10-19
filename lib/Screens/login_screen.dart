@@ -1,11 +1,23 @@
+import 'dart:ffi';
+
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:youthopia/data/shared_preferences.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
 import 'package:youthopia/widgets/form_input_widget.dart';
 import 'package:youthopia/widgets/star_container.dart';
 import 'package:youthopia/widgets/youthopia_appbar.dart';
+<<<<<<< HEAD
+=======
+
+import '../data/data_instance.dart';
+import '../data/models/request_status.dart';
+>>>>>>> 089bc04764e16031e8e80e209e00f200850221af
 import '../utils/colors.dart';
+import '../utils/snackbar.dart';
+import 'navigation_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -50,9 +62,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         onChanged: (value) {
                           email = value;
                         },
-                        validation: (value) => (email.isEmpty ||
-                            !RegExp(r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
-                                .hasMatch(email)),
+                        validation: (value) => (!EmailValidator.validate(email) ||
+                            email.isEmpty),
                         errorText: 'Enter Valid email',
                         keyboard: TextInputType.text,
                       ).paddingForOnly(bottom: 30),
@@ -67,9 +78,30 @@ class _LoginScreenState extends State<LoginScreen> {
                         keyboard: TextInputType.text,
                       ).paddingForOnly(bottom: 30),
                       OutlinedButton(
-                        onPressed: () {
+                        onPressed: () async {
                           if (formKey.currentState!.validate()) {
                             print(password);
+                            Auth auth = Auth();
+                            final response = await auth.login(email : email, password: password);
+                            if (response.status ==
+                                RequestStatus.SUCCESS) {
+                              Data.user = response.body!;
+                              ShowSnackBar.snack(context,
+                                  title: 'Log in Success',
+                                  message: '',
+                                  type: 'success');
+                              Navigator.pushAndRemoveUntil(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          BottomNavbar()),
+                                      (route) => false);
+                            } else {
+                              ShowSnackBar.snack(context,
+                                  title: 'An Error Occured',
+                                  message: response.message!,
+                                  type: 'failure');
+                            }
                             print('Submitted');
                           }
                         },
@@ -96,8 +128,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   )).paddingWithSymmetry(horizontal: 20)
             ],
           )).paddingWithSymmetry(horizontal: 10),
-          Image.asset('Assets/youthopia_white_flower.png')
-              .paddingForOnly(top: 20)
+          Container(
+            child: Image.asset('Assets/youthopia_white_flower.png')
+                .paddingForOnly(top: 20),
+          )
         ],
       ),
     ));

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "109541949397",
+    "project_id": "youthopia2023",
+    "storage_bucket": "youthopia2023.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:109541949397:android:c46228d33f880b9737c75c",
+        "android_client_info": {
+          "package_name": "com.example.youthopia"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6URpUMa15WScknECsMNPUgc3wmuknPls"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,11 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:youthopia/data/data_instance.dart';
+import 'package:youthopia/data/shared_preferences.dart';
+import 'package:youthopia/screens/college_screen.dart';
+import 'package:youthopia/screens/ticket_screen.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_container.dart';
 import 'package:youthopia/widgets/profile_details.dart';
-
 import '../widgets/background_scaffold.dart';
+import '../widgets/star_container.dart';
+import '../widgets/youthopia_appbar.dart';
+import 'package:youthopia/screens/ticket_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -17,72 +23,38 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    print(Data.user.college);
     // return const Placeholder();
     return BackgroundContainer(
-      child: Column(
-        children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-            height: 80,
-          ),
-          Image.asset(
-            'Assets/youthopia_logo.png',
-            width: 200,
-            height: 65,
-            fit: BoxFit.cover,
-          ).paddingForOnly(bottom: 40),
-          Stack(children: [
-            Container(
-              height: 400,
-              width: MediaQuery.of(context).size.width - 60,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: CustomColors.blackTrans,
-              ),
-            ).paddingForOnly(top: 60),
-            Positioned(
-              top: 0,
-              left: 110,
-              right: 110,
+      child: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            YouthopiaAppbar().paddingForOnly(top: 40),
+            StarContainer(
               child: Column(
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(220),
-                    child: Image.asset(
-                      'Assets/fake_image.png',
-                      alignment: Alignment.center,
-                      height: 130,
-                      width: 130,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
                   Text(
-                    "Abhishek",
-                    style: TextStyle(fontSize: 25, color: CustomColors.white),
-                  ).paddingForOnly(top: 10),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width / 2,
-                    child: Text(
-                      "abhishek@gmail.com",
-                      style: TextStyle(fontSize: 18, color: CustomColors.white),
-                    ).paddingForOnly(top: 10),
-                  ),
-                ],
-              ),
-            ),
-            Positioned(
-              top: 250,
-              child: Column(
-                children: [
-                  ProfileDetails(domain: "Mobile Number", value: "8829442726"),
-                  ProfileDetails(domain: "Branch", value: "B.Tech"),
-                  ProfileDetails(domain: "year", value: "3 year"),
-                  ProfileDetails(domain: "College", value: "Dit"),
+                    Data.user.username,
+                    style: TextStyle(color: CustomColors.white, fontSize: 30),
+                  ).paddingForOnly(top: 20),
+                  Text(
+                    Data.user.email,
+                    style: TextStyle(color: CustomColors.white, fontSize: 20),
+                  ).paddingForOnly(top: 20, bottom: 20),
+                  ProfileDetails(domain: "Mobile Number", value: Data.user.phonenumber),
+                  ProfileDetails(domain: "year", value: Data.user.year),
+                  ProfileDetails(domain: "College", value: Data.user.college),
                   SizedBox(
                     width: 180.0,
                     height: 40.0,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>  TicketScreen()));
+                      },
                       style: OutlinedButton.styleFrom(
                           backgroundColor: CustomColors.grey,
                           shape: RoundedRectangleBorder(
@@ -98,12 +70,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ]),
                     ),
-                  ).paddingForOnly(top: 20, left: 20),
+                  ).paddingForOnly(top: 60, left: 20),
                   SizedBox(
                     width: 150.0,
                     height: 40.0,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () async {
+                        Data.token = '';
+                        Auth auth = Auth();
+                        await auth.logout();
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => CollegeScreen()),
+                            (route) => false);
+                      },
                       style: OutlinedButton.styleFrom(
                           backgroundColor: Colors.white,
                           shape: RoundedRectangleBorder(
@@ -123,12 +104,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ]),
                     ),
-                  ).paddingForOnly(top: 20),
+                  ).paddingForOnly(top: 20, bottom: 20),
                 ],
-              ),
+              ).paddingWithSymmetry(horizontal: 18),
+            ).paddingForOnly(
+              bottom: 40,
             ),
-          ])
-        ],
+          ],
+        ),
       ),
     );
   }
