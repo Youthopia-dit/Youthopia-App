@@ -32,17 +32,16 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 children: [
                   Text(
-                    "Abhishek",
+                    Data.user.username,
                     style: TextStyle(color: CustomColors.white, fontSize: 30),
                   ).paddingForOnly(top: 20),
                   Text(
-                    "Abhishek123@gmail.com",
+                    Data.user.email,
                     style: TextStyle(color: CustomColors.white, fontSize: 20),
                   ).paddingForOnly(top: 20, bottom: 20),
-                  ProfileDetails(domain: "Mobile Number", value: "8829442726"),
-                  ProfileDetails(domain: "Branch", value: "B.Tech"),
-                  ProfileDetails(domain: "year", value: "3 year"),
-                  ProfileDetails(domain: "College", value: "Dit"),
+                  ProfileDetails(domain: "Mobile Number", value: Data.user.phonenumber),
+                  ProfileDetails(domain: "year", value: Data.user.year),
+                  ProfileDetails(domain: "College", value: Data.user.college),
                   SizedBox(
                     width: 180.0,
                     height: 40.0,
