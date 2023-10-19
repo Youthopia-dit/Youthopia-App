@@ -19,22 +19,13 @@ class LiveEventCard extends StatelessWidget {
       children: [
         SizedBox(
           width: 400,
-          child: CarouselSlider(
-            items: imagePaths.map((imagePath) {
-              return ClipRRect(
-                borderRadius: BorderRadius.circular(20),
-                child: Image.asset(
-                  imagePath,
-                  alignment: Alignment.center,
-                  fit: BoxFit.cover,
-                  color: CustomColors.black,
-                ),
-              );
-            }).toList(),
-            options: CarouselOptions(
-              height: 150,
-              enableInfiniteScroll: true,
-              autoPlay: true,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'Assets/fake_image.png',
+              alignment: Alignment.center,
+              fit: BoxFit.cover,
+              color: CustomColors.black,
             ),
           ),
         ),
@@ -59,31 +50,32 @@ class LiveEventCard extends StatelessWidget {
             ],
           ),
         ),
-        const Positioned(
-          bottom: 24,
-          left: 4,
-          child: Row(
+        Positioned(
+          bottom: 10,
+          left: 10,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Icon(
-                Icons.calendar_today,
-                color: Colors.white,
-              ),
-              SizedBox(
-                width: 2,
-              ),
-              Text(
-                'Date',
+              const Row(
+                children: [
+                  Icon(
+                    Icons.calendar_today,
+                    color: Colors.white,
+                  ),
+                  SizedBox(
+                    width: 2,
+                  ),
+                  Text(
+                    'Date',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ).paddingForOnly(bottom: 10),
+              const Text(
+                'Event Name',
                 style: TextStyle(color: Colors.white),
               ),
             ],
-          ),
-        ),
-        const Positioned(
-          bottom: 10,
-          left: 10,
-          child: Text(
-            'Event Name',
-            style: TextStyle(color: Colors.white),
           ),
         ),
         Positioned(

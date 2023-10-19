@@ -9,6 +9,8 @@ class FormInputWidget extends StatelessWidget {
       required this.onChanged,
       required this.validation,
       required this.errorText,
+      this.obscureText = false,
+      this.suffix,
       required this.keyboard});
 
   final String fieldName;
@@ -16,6 +18,8 @@ class FormInputWidget extends StatelessWidget {
   final bool Function(String) validation;
   final String errorText;
   final TextInputType keyboard;
+  final bool obscureText;
+  final Widget? suffix;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -29,6 +33,7 @@ class FormInputWidget extends StatelessWidget {
               fontSize: 18),
         ).paddingForOnly(bottom: 10),
         TextFormField(
+            obscureText: obscureText,
             keyboardType: keyboard,
             onChanged: (value) => onChanged(value),
             style: const TextStyle(
@@ -39,6 +44,7 @@ class FormInputWidget extends StatelessWidget {
               return validation(name) ? errorText : null;
             },
             decoration: InputDecoration(
+                suffixIcon: suffix,
                 border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
                     borderSide:
@@ -53,7 +59,8 @@ class FormInputWidget extends StatelessWidget {
                         const BorderSide(color: CustomColors.white, width: 2)),
                 errorBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(16),
-                    borderSide: const BorderSide(color: CustomColors.red, width: 2))))
+                    borderSide:
+                        const BorderSide(color: CustomColors.red, width: 2))))
       ],
     );
   }
