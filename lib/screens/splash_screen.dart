@@ -45,15 +45,17 @@ class _SplashScreenState extends State<SplashScreen> {
     if (await getEventsData()) {
       Auth auth = Auth();
       if (await auth.getToken() != null) {
+        print('test');
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => BottomNavbar()),
             (route) => false);
+      } else {
+        Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => CollegeScreen()),
+                (route) => false);
       }
-      Navigator.pushAndRemoveUntil(
-          context,
-          MaterialPageRoute(builder: (context) => CollegeScreen()),
-          (route) => false);
     }
   }
 
