@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:youthopia/data/data_instance.dart';
 import 'package:youthopia/data/shared_preferences.dart';
 import 'package:youthopia/screens/college_screen.dart';
+import 'package:youthopia/screens/ticket_screen.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_container.dart';
@@ -10,6 +11,7 @@ import 'package:youthopia/widgets/profile_details.dart';
 import '../widgets/background_scaffold.dart';
 import '../widgets/star_container.dart';
 import '../widgets/youthopia_appbar.dart';
+import 'package:youthopia/screens/ticket_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -21,6 +23,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    print(Data.user.college);
     // return const Placeholder();
     return BackgroundContainer(
       child: SingleChildScrollView(
@@ -46,7 +49,12 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     width: 180.0,
                     height: 40.0,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>  TicketScreen()));
+                      },
                       style: OutlinedButton.styleFrom(
                           backgroundColor: CustomColors.grey,
                           shape: RoundedRectangleBorder(
