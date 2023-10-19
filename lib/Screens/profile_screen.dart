@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:youthopia/data/data_instance.dart';
 import 'package:youthopia/data/shared_preferences.dart';
 import 'package:youthopia/screens/college_screen.dart';
+import 'package:youthopia/screens/ticket_screen.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_container.dart';
@@ -10,6 +11,7 @@ import 'package:youthopia/widgets/profile_details.dart';
 import '../widgets/background_scaffold.dart';
 import '../widgets/star_container.dart';
 import '../widgets/youthopia_appbar.dart';
+import 'package:youthopia/screens/ticket_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -21,6 +23,7 @@ class ProfileScreen extends StatefulWidget {
 class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
+    print(Data.user.college);
     // return const Placeholder();
     return BackgroundContainer(
       child: SingleChildScrollView(
@@ -32,22 +35,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: Column(
                 children: [
                   Text(
-                    "Abhishek",
+                    Data.user.username,
                     style: TextStyle(color: CustomColors.white, fontSize: 30),
                   ).paddingForOnly(top: 20),
                   Text(
-                    "Abhishek123@gmail.com",
+                    Data.user.email,
                     style: TextStyle(color: CustomColors.white, fontSize: 20),
                   ).paddingForOnly(top: 20, bottom: 20),
-                  ProfileDetails(domain: "Mobile Number", value: "8829442726"),
-                  ProfileDetails(domain: "Branch", value: "B.Tech"),
-                  ProfileDetails(domain: "year", value: "3 year"),
-                  ProfileDetails(domain: "College", value: "Dit"),
+                  ProfileDetails(domain: "Mobile Number", value: Data.user.phonenumber),
+                  ProfileDetails(domain: "year", value: Data.user.year),
+                  ProfileDetails(domain: "College", value: Data.user.college),
                   SizedBox(
                     width: 180.0,
                     height: 40.0,
                     child: OutlinedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>  TicketScreen()));
+                      },
                       style: OutlinedButton.styleFrom(
                           backgroundColor: CustomColors.grey,
                           shape: RoundedRectangleBorder(

@@ -6,15 +6,15 @@ import 'package:youthopia/widgets/background_scaffold.dart';
 class TicketScreen extends StatelessWidget {
   const TicketScreen({
     super.key,
-    required this.event,
-    required this.venue,
-    required this.id,
-    required this.date,
+    this.event,
+    this.venue,
+    this.id,
+    this.date,
   });
-  final String event;
-  final String venue;
-  final String id;
-  final String date;
+  final String? event;
+  final String? venue;
+  final String? id;
+  final String? date;
   @override
   Widget build(BuildContext context) {
     return BackgroundScaffold(
