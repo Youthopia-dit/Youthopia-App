@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:youthopia/data/models/event_model.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
+import 'package:youthopia/widgets/youthopia_appbar.dart';
 
 class SingleEventScreen extends StatefulWidget {
   const SingleEventScreen({super.key, required this.eventDetails});
@@ -14,19 +15,32 @@ class SingleEventScreen extends StatefulWidget {
 class _SingleEventScreenState extends State<SingleEventScreen> {
   @override
   Widget build(BuildContext context) {
+    // print(widget.eventDetails.description);
     return BackgroundScaffold(
-      child: Column(children: [
-        Container(
-          width: 337,
-          height: 176,
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(21),
+      child: ListView(children: [
+        YouthopiaAppbar(),
+        ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Image.network(
+            widget.eventDetails.poster,
+            errorBuilder: (context, exception, stacktrace) {
+              return Image.asset(
+                'Assets/fake_image.png',
+                alignment: Alignment.center,
+                height: 100,
+                width: 150,
+                fit: BoxFit.cover,
+              );
+            },
+            alignment: Alignment.center,
+            height: 200,
+            width: 350,
+            fit: BoxFit.cover,
           ),
-        ).paddingForOnly(top: 100),
+        ).paddingForOnly(top:20,bottom:20,left:30,right: 30),
         Row(
           children: [
-            Text("Event info",
+            Text(widget.eventDetails.eventName,
                 style: TextStyle(
                   fontSize: 30,
                   color: Colors.white,
@@ -57,7 +71,7 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
               size: 15,
               color: Colors.white,
             ).paddingForOnly(left: 50, top: 15, right: 5),
-            Text("0 Nov 23",
+            Text(widget.eventDetails.date,
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.white,
@@ -71,7 +85,7 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
               size: 15,
               color: Colors.white,
             ).paddingForOnly(left: 50, top: 15, right: 5),
-            Text("Venue",
+            Text(widget.eventDetails.venue,
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.white,
@@ -85,13 +99,28 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
               size: 15,
               color: Colors.white,
             ).paddingForOnly(left: 50, top: 15, right: 5),
-            Text("₹10",
+            Text("${widget.eventDetails.feesdit} for DIT students"  ,
                 style: TextStyle(
                   fontSize: 15,
                   color: Colors.white,
                 )).paddingForOnly(top: 15),
           ],
         ),
+        Row(
+          children: [
+            Icon(
+              Icons.money,
+              size: 15,
+              color: Colors.white,
+            ).paddingForOnly(left: 50, top: 15, right: 5),
+            Text("${widget.eventDetails.feesnondit} for non-DIT students" ,
+                style: TextStyle(
+                  fontSize: 15,
+                  color: Colors.white,
+                )).paddingForOnly(top: 15),
+          ],
+        ),
+
         Row(children: [
           Text("Discription",
               style: TextStyle(
@@ -100,12 +129,14 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
               )),
         ]).paddingForOnly(left: 50, top: 15, right: 5),
         Row(children: [
-          Text("This is the discription of the event",
-              style: TextStyle(
-                fontSize: 20,
-                color: Colors.white,
-              ))
-        ]).paddingForOnly(left: 50, top: 10, right: 5),
+          SizedBox(height: 300,width: 300,
+            child: Text(widget.eventDetails.description,
+                style: TextStyle(
+                  fontSize: 20,
+                  color: Colors.white,
+                )),
+          )
+        ]).paddingForOnly(left: 50, top: 10, right: 5,bottom: 10),
         SizedBox(
           width: 300.0,
           height: 40.0,
@@ -128,7 +159,7 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
             ]),
           ),
         ).paddingForOnly(top: 20),
-      ]),
+      ]).paddingForOnly(top: 10,bottom: 40),
     );
   }
 }
