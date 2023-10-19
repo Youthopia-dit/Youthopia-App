@@ -4,7 +4,6 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
-import 'package:youthopia/data/models/base_response.dart';
 import 'package:youthopia/data/models/event_model.dart';
 import 'package:youthopia/data/models/request_status.dart';
 import 'package:youthopia/data/models/user_model.dart';
@@ -13,7 +12,31 @@ class Api {
   final String baseUrl = 'youthopiabackend.azurewebsites.net';
   // final String baseUrl = '192.168.1.16:3000';
 
-  Future<void> login() async {}
+  Future<RequestStatus<UserDetails?>> login(
+      {required String email, required String password}) async {
+    final url = Uri.https(baseUrl, '/auth/login');
+    final body = {'email': email, 'password': password};
+    try {
+      final response = await http.post(url,
+          headers: {"Content-Type": "application/json"},
+          body: jsonEncode(body));
+      final res = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        final token = res['token'];
+        final UserDetails user = UserDetails.fromMap(res['user']);
+        return RequestStatus(
+            status: RequestStatus.SUCCESS, body: user, message: token);
+      } else {
+        return RequestStatus(
+            status: RequestStatus.FAILURE, message: res['message']);
+      }
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+      return RequestStatus(
+          status: RequestStatus.FAILURE,
+          message: 'Some Error Occured!. Please Try again Later!!');
+    }
+  }
 
   Future<String> uploadImage(File? image) async {
     String imageUrl = '';
@@ -38,7 +61,7 @@ class Api {
       File? image}) async {
     String imageUrl = await uploadImage(image);
 
-    final Url = Uri.https(baseUrl, '/auth/register');
+    final url = Uri.https(baseUrl, '/auth/register');
     final body = {
       'firstName': name,
       'lastName': '',
@@ -52,23 +75,18 @@ class Api {
     };
     // print(body);
     try {
-      final response = await http.post(Url,
+      final response = await http.post(url,
           headers: {"Content-Type": "application/json"},
           body: jsonEncode({'data': body}));
-      print(response.statusCode);
-      print(response.body);
       final res = jsonDecode(response.body);
       if (response.statusCode == 201) {
         final token = res['token'];
         final UserDetails user = UserDetails.fromMap(res['user']);
         return RequestStatus(
-            status: RequestStatus.SUCCESS,
-            body: user,
-            message: token);
+            status: RequestStatus.SUCCESS, body: user, message: token);
       } else {
         return RequestStatus(
-            status: RequestStatus.FAILURE,
-            message: res['message']);
+            status: RequestStatus.FAILURE, message: res['message']);
       }
     } on Exception catch (e) {
       debugPrint(e.toString());
@@ -79,9 +97,9 @@ class Api {
   }
 
   Future<RequestStatus<List<EventDetails>?>> getEventDetails() async {
-    final Url = Uri.https(baseUrl, '/event/geteventdetails');
+    final url = Uri.https(baseUrl, '/event/geteventdetails');
     try {
-      final response = await http.get(Url);
+      final response = await http.get(url);
       if (response.statusCode == 200) {
         final res = jsonDecode(response.body);
         List<EventDetails> eventList = [];
