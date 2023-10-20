@@ -2,6 +2,8 @@ import 'dart:io';
 
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:youthopia/data/backend.dart';
+import 'package:youthopia/data/models/base_response.dart';
+import 'package:youthopia/data/models/ticket_model.dart';
 import 'package:youthopia/data/models/user_model.dart';
 
 import 'data_instance.dart';
@@ -82,5 +84,22 @@ class Auth {
   Future<void> logout() async {
     final SharedPreferences pref = await SharedPreferences.getInstance();
     await pref.remove('token');
+  }
+
+  Future<RequestStatus<BaseResponse?>> registerEvent({required String name, required List<String> members, required String phone, required String eventId}) async {
+    Api api = Api();
+    String? token = await getToken();
+    print('token');
+    final response = await api.registerEvent(token: token!, name: name, members: members, phone: phone, eventId: eventId);
+    return response;
+  }
+
+  Future<RequestStatus<List<TicketDetails>?>> getRegisteredEvents() async {
+    String? token = await getToken();
+    Api api = Api();
+    print('token');
+    final response = await api.getRegisteredEvents(token: token!);
+    return response;
+
   }
 }

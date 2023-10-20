@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/data/models/event_model.dart';
+import 'package:youthopia/data/shared_preferences.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/form_input_widget.dart';
 
-class TeamRegForm extends StatefulWidget {
-  const TeamRegForm({super.key});
+import '../data/data_instance.dart';
+import '../data/models/request_status.dart';
+import '../utils/snackbar.dart';
 
+class TeamRegForm extends StatefulWidget {
+  const TeamRegForm({super.key, required this.details});
+  final EventDetails details;
   @override
   State<TeamRegForm> createState() => _TeamRegFormState();
 }
@@ -14,9 +20,21 @@ class _TeamRegFormState extends State<TeamRegForm> {
   String teamName = '';
   String id = '';
   int teamSize = 1;
-  List<String> members = List.generate(10, (index) => '');
+  String phone = '';
+  late int min;
+  late int max;
+  late List<String> members;
   final formKey = GlobalKey<FormState>();
-
+  @override
+  void initState() {
+    max = widget.details.participantMax;
+    min = widget.details.participantMin;
+    teamSize = min;
+    members = List.generate(max, (index) => '');
+    id = Data.user.participantIdentityNumber;
+    phone = Data.user.phonenumber;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -29,18 +47,31 @@ class _TeamRegFormState extends State<TeamRegForm> {
                   onChanged: (value) {
                     teamName = value;
                   },
-                  validation: (value) => value.isNotEmpty,
+                  validation: (value) => value.isEmpty,
                   errorText: 'Team Name cannot be empty',
                   keyboard: TextInputType.text)
               .paddingForOnly(bottom: 20),
           FormInputWidget(
                   fieldName: 'Leader\'s ID',
+                  initial: id,
+                  disabled: true,
                   onChanged: (value) {
                     id = value;
                   },
-                  validation: (value) => value.isNotEmpty,
+                  validation: (value) => value.isEmpty,
                   errorText: 'ID cannot be empty',
                   keyboard: TextInputType.number)
+              .paddingForOnly(bottom: 20),
+          FormInputWidget(
+              fieldName: 'Leader\'s Phone Number',
+              initial: phone,
+              disabled: true,
+              onChanged: (value) {
+                phone = value;
+              },
+              validation: (value) => value.length != 10,
+              errorText: 'ID cannot be empty',
+              keyboard: TextInputType.number)
               .paddingForOnly(bottom: 20),
           const Text(
             'Team Size',
@@ -54,7 +85,7 @@ class _TeamRegFormState extends State<TeamRegForm> {
               CustomBox(
                   text: '-',
                   onPressed: () {
-                    if (teamSize > 1) {
+                    if (teamSize > min) {
                       setState(() {
                         teamSize = teamSize - 1;
                       });
@@ -64,7 +95,7 @@ class _TeamRegFormState extends State<TeamRegForm> {
               CustomBox(
                 text: '+',
                 onPressed: () {
-                  if (teamSize < 5) {
+                  if (teamSize < max) {
                     setState(() {
                       teamSize = teamSize + 1;
                     });
@@ -90,9 +121,25 @@ class _TeamRegFormState extends State<TeamRegForm> {
                     .paddingForOnly(bottom: 20);
               }),
           OutlinedButton(
-            onPressed: () {
+            onPressed: () async {
               if (formKey.currentState!.validate()) {
+                print(teamName);
+                List<String> M = [];
+                for(String mem in members) {
+                  if(mem != '') {
+                    M.add(mem);
+                  }
+                }
+                Auth auth = Auth();
+                final response = await auth.registerEvent(name: teamName, members: M, phone: phone, eventId: widget.details.eventId);
                 print('Submitted');
+                if(response.status == RequestStatus.FAILURE) {
+                  ShowSnackBar.snack(context, title: 'Failure', message: 'Event Registration Failure', type: 'failure');
+                } else {
+                  ShowSnackBar.snack(context, title: 'Success', message: 'Registration Success', type: 'success');
+                  Navigator.pop(context);
+                  Navigator.pop(context);
+                }
               }
             },
             style: OutlinedButton.styleFrom(

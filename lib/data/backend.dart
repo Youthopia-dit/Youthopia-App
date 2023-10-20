@@ -8,6 +8,9 @@ import 'package:youthopia/data/models/event_model.dart';
 import 'package:youthopia/data/models/request_status.dart';
 import 'package:youthopia/data/models/user_model.dart';
 
+import 'models/base_response.dart';
+import 'models/ticket_model.dart';
+
 class Api {
   final String baseUrl = 'youthopiabackend.azurewebsites.net';
   // final String baseUrl = '192.168.1.16:3000';
@@ -26,6 +29,36 @@ class Api {
         final UserDetails user = UserDetails.fromMap(res['user']);
         return RequestStatus(
             status: RequestStatus.SUCCESS, body: user, message: token);
+      } else {
+        return RequestStatus(
+            status: RequestStatus.FAILURE, message: res['message']);
+      }
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+      return RequestStatus(
+          status: RequestStatus.FAILURE,
+          message: 'Some Error Occured!. Please Try again Later!!');
+    }
+  }
+
+  Future<RequestStatus<List<TicketDetails>?>> getRegisteredEvents(
+      {required String token}) async {
+    final url = Uri.https(baseUrl, '/user/getregisteruser');
+    try {
+      final header = {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer $token"
+      };
+      final response = await http.get(url, headers: header);
+      print(response.body);
+      print(response.statusCode);
+      final res = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        List<TicketDetails> list = [];
+        for (Map<String, dynamic> map in res['details']) {
+          list.add(TicketDetails.fromMap(map));
+        }
+        return RequestStatus(status: RequestStatus.SUCCESS, body: list);
       } else {
         return RequestStatus(
             status: RequestStatus.FAILURE, message: res['message']);
@@ -69,6 +102,45 @@ class Api {
       } else {
         return RequestStatus(
             status: RequestStatus.FAILURE, message: res['message']);
+      }
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+      return RequestStatus(
+          status: RequestStatus.FAILURE,
+          message: 'Some Error Occured!. Please Try again Later!!');
+    }
+  }
+
+  Future<RequestStatus<BaseResponse?>> registerEvent(
+      {required String token,
+      required String name,
+      required List<String> members,
+      required String phone,
+      required String eventId}) async {
+    print('test');
+    final url = Uri.https(baseUrl, '/user/registeruser');
+    final header = {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer $token"
+    };
+    final body = {
+      "teamName": name,
+      "mem": members,
+      "phone": phone,
+      "eventID": eventId
+    };
+    try {
+      print(body);
+      final response = await http.post(url,
+          headers: header, body: jsonEncode({"data": body}));
+      print(response.body);
+      print(response.statusCode);
+      final res = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        return RequestStatus(
+            status: RequestStatus.SUCCESS, message: 'Registration success');
+      } else {
+        return RequestStatus(status: RequestStatus.FAILURE, message: 'Failure');
       }
     } on Exception catch (e) {
       debugPrint(e.toString());

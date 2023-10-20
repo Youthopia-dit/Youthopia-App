@@ -186,7 +186,8 @@ class SingleEventScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => const FormScreen()),
+                MaterialPageRoute(
+                    builder: (context) => FormScreen(event: eventDetails)),
               );
             },
             style: OutlinedButton.styleFrom(
@@ -194,18 +195,16 @@ class SingleEventScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
                 )),
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Register',
-                    style: TextStyle(color: Colors.black, fontSize: 20),
-                  ).paddingForOnly(right: 10),
-                  Icon(
-                    Icons.arrow_right_alt_sharp,
-                    color: Colors.black,
-                  )
-                ]),
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+              Text(
+                'Register',
+                style: TextStyle(color: Colors.black, fontSize: 20),
+              ).paddingForOnly(right: 10),
+              Icon(
+                Icons.arrow_right_alt_sharp,
+                color: Colors.black,
+              )
+            ]),
           ),
         ).paddingForOnly(top: 20, bottom: 40, left: 20, right: 20),
       ]),

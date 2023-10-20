@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:youthopia/data/data_instance.dart';
 import 'package:youthopia/data/shared_preferences.dart';
 import 'package:youthopia/screens/college_screen.dart';
+import 'package:youthopia/screens/ticket_list_screen.dart';
 import 'package:youthopia/screens/ticket_screen.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
@@ -53,7 +54,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>  TicketScreen()));
+                                builder: (context) =>  TicketListScreen()));
                       },
                       style: OutlinedButton.styleFrom(
                           backgroundColor: CustomColors.grey,
@@ -70,7 +71,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                             ),
                           ]),
                     ),
-                  ).paddingForOnly(top: 60, left: 20),
+                  ).paddingForOnly(top: 60),
                   SizedBox(
                     width: 150.0,
                     height: 40.0,

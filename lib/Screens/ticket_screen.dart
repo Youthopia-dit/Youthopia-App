@@ -3,8 +3,8 @@ import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
 
-class TicketScreen extends StatelessWidget {
-  const TicketScreen({
+class TS extends StatelessWidget {
+  const TS({
     super.key,
     this.event,
     this.venue,
