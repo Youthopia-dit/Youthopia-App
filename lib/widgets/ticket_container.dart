@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/data/models/ticket_model.dart';
 import 'package:youthopia/data/shared_preferences.dart';
+import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/widgets/black_container.dart';
 
 class TicketContainer extends StatelessWidget {
@@ -10,6 +11,7 @@ class TicketContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlackContainer(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         ClipRRect(
           borderRadius: BorderRadius.vertical(top: Radius.circular(25)),
@@ -29,7 +31,11 @@ class TicketContainer extends StatelessWidget {
             width: 350,
             fit: BoxFit.cover,
           ),
-        )
+        ),
+        Text(ticket.event.eventName, style: TextStyle(
+          color: CustomColors.white,
+          fontSize: 20
+        ),)
       ],
     ));
   }
