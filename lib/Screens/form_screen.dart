@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/data/models/event_model.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
 import 'package:youthopia/widgets/black_container.dart';
@@ -8,20 +9,23 @@ import 'package:youthopia/widgets/youthopia_appbar.dart';
 import '../utils/colors.dart';
 
 class FormScreen extends StatefulWidget {
-  const FormScreen({Key? key}) : super(key: key);
-
+  const FormScreen({Key? key, required this.event}) : super(key: key);
+  final EventDetails event;
   @override
   State<FormScreen> createState() => _FormScreenState();
 }
 
 class _FormScreenState extends State<FormScreen> with TickerProviderStateMixin {
-  int counter = 1;
   late TabController tabController;
 
   @override
   void initState() {
+
+    int max = widget.event.participantMax;
+    int min = widget.event.participantMin;
+    int initial = max <= 1 ? 1 : 0;
     tabController = TabController(
-      initialIndex: 0,
+      initialIndex: initial,
       length: 2,
       vsync: this,
     );
@@ -56,8 +60,8 @@ class _FormScreenState extends State<FormScreen> with TickerProviderStateMixin {
                 physics: const NeverScrollableScrollPhysics(),
                 controller: tabController,
                 children: [
-                  const TeamRegForm().paddingWithSymmetry(horizontal: 16),
-                  const IndRegForm().paddingWithSymmetry(horizontal: 16),
+                  TeamRegForm(details: widget.event,).paddingWithSymmetry(horizontal: 16),
+                  IndRegForm(event: widget.event,).paddingWithSymmetry(horizontal: 16),
                 ],
               ).alignment(align: Alignment.topLeft),
             ),

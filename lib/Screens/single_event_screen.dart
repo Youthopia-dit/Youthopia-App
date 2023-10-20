@@ -1,30 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/Screens/form_screen.dart';
 import 'package:youthopia/data/models/event_model.dart';
+import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';
 import 'package:youthopia/widgets/youthopia_appbar.dart';
 
-class SingleEventScreen extends StatefulWidget {
+class SingleEventScreen extends StatelessWidget {
   const SingleEventScreen({super.key, required this.eventDetails});
   final EventDetails eventDetails;
 
   @override
-  State<SingleEventScreen> createState() => _SingleEventScreenState();
-}
-
-class _SingleEventScreenState extends State<SingleEventScreen> {
-  @override
   Widget build(BuildContext context) {
-    // print(widget.eventDetails.description);
-    print(widget.eventDetails.rules[0]);
     return BackgroundScaffold(
-      child: ListView(physics: BouncingScrollPhysics(), children: [
-        YouthopiaAppbar(),
+      child: ListView(physics: const BouncingScrollPhysics(), children: [
+        const YouthopiaAppbar(),
         ClipRRect(
           borderRadius: BorderRadius.circular(20),
           child: Image.network(
-            widget.eventDetails.poster,
+            eventDetails.poster,
             errorBuilder: (context, exception, stacktrace) {
               return Image.asset(
                 'Assets/fake_image.png',
@@ -39,145 +33,152 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
             width: 350,
             fit: BoxFit.cover,
           ),
-        ).paddingForOnly(top: 20, bottom: 20, left: 30, right: 30),
+        ).paddingForOnly(bottom: 20, left: 16, right: 16),
+        Text(
+          eventDetails.eventName,
+          style: const TextStyle(
+              color: CustomColors.white,
+              fontWeight: FontWeight.bold,
+              fontSize: 24),
+        ).paddingWithSymmetry(horizontal: 16),
         Row(
           children: [
-            Text(widget.eventDetails.eventName,
-                style: TextStyle(
-                  fontSize: 30,
-                  color: Colors.white,
-                ))
-          ],
-        ).paddingForOnly(
-          left: 50,
-          top: 15,
-        ),
-        Row(
-          children: [
-            Icon(
+            const Icon(
               Icons.watch_later_outlined,
-              size: 15,
+              size: 18,
               color: Colors.white,
-            ).paddingForOnly(left: 50, top: 15, right: 5),
-            Text(
-                "${widget.eventDetails.startTime} - ${widget.eventDetails.endTime}",
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                )).paddingForOnly(top: 15),
+            ).paddingForOnly(left: 24, top: 15, right: 5),
+            Expanded(
+              child: Text("${eventDetails.startTime} - ${eventDetails.endTime}",
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  )).paddingForOnly(top: 15),
+            ),
           ],
         ),
         Row(
           children: [
-            Icon(
+            const Icon(
               Icons.calendar_month,
-              size: 15,
+              size: 18,
               color: Colors.white,
-            ).paddingForOnly(left: 50, top: 15, right: 5),
-            Text(widget.eventDetails.date,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                )).paddingForOnly(top: 15),
+            ).paddingForOnly(left: 24, top: 15, right: 5),
+            Expanded(
+              child: Text(eventDetails.date,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  )).paddingForOnly(top: 15),
+            ),
           ],
         ),
         Row(
           children: [
-            Icon(
+            const Icon(
               Icons.location_on_rounded,
-              size: 15,
+              size: 18,
               color: Colors.white,
-            ).paddingForOnly(left: 50, top: 15, right: 5),
-            Text(widget.eventDetails.venue,
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                )).paddingForOnly(top: 15),
+            ).paddingForOnly(left: 24, top: 15, right: 5),
+            Expanded(
+              child: Text(eventDetails.venue,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  )).paddingForOnly(top: 15),
+            ),
           ],
         ),
         Row(
           children: [
-            Icon(
+            const Icon(
               Icons.money,
-              size: 15,
+              size: 18,
               color: Colors.white,
-            ).paddingForOnly(left: 50, top: 15, right: 5),
-            Text("${widget.eventDetails.feesdit} for DIT students",
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                )).paddingForOnly(top: 15),
+            ).paddingForOnly(left: 24, top: 15, right: 5),
+            Expanded(
+              child: Text("${eventDetails.feesdit} for DIT students",
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  )).paddingForOnly(top: 15),
+            ),
           ],
         ),
         Row(
           children: [
-            Icon(
+            const Icon(
               Icons.money,
-              size: 15,
+              size: 18,
               color: Colors.white,
-            ).paddingForOnly(left: 50, top: 15, right: 5),
-            Text("${widget.eventDetails.feesnondit} for non-DIT students",
-                style: TextStyle(
-                  fontSize: 15,
-                  color: Colors.white,
-                )).paddingForOnly(top: 15),
+            ).paddingForOnly(left: 24, top: 15, right: 5),
+            Expanded(
+              child: Text("${eventDetails.feesnondit} for non-DIT students",
+                  style: const TextStyle(
+                    fontSize: 18,
+                    color: Colors.white,
+                  )).paddingForOnly(top: 15),
+            ),
           ],
         ),
-        Row(children: [
-          Text("Description",
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.white,
-              )),
-        ]).paddingForOnly(left: 50, top: 15, right: 5),
-        Row(children: [
-          SizedBox(
-            width: 300,
-            child: Text(widget.eventDetails.description,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.white,
-                )),
-          )
-        ]).paddingForOnly(left: 50, top: 10, right: 5, bottom: 10),
-        Row(children: [
-          Text("Rules",
-              style: TextStyle(
-                fontSize: 30,
-                color: Colors.white,
-              )),
-        ]).paddingForOnly(left: 50, top: 15, right: 5),
-        ListView.builder(
-            shrinkWrap: true,
-            physics: ClampingScrollPhysics(),
-            itemCount: widget.eventDetails.rules.length,
-            itemBuilder: (context, index) {
-              return Text(widget.eventDetails.rules[index],
-                  style: TextStyle(
+        const Text("Description",
+            style: TextStyle(
+              fontSize: 24,
+              color: Colors.white,
+            )).paddingForOnly(left: 16, top: 15, right: 5),
+        Row(
+          children: [
+            Expanded(
+              child: Text(eventDetails.description,
+                  style: const TextStyle(
                     fontSize: 20,
                     color: Colors.white,
-                  )).paddingForOnly(left: 40, right: 40);
-            }),
-        widget.eventDetails.bots.isEmpty
-            ? SizedBox()
-            : Row(children: [
+                  )),
+            ),
+          ],
+        ).paddingForOnly(left: 24, top: 10, right: 5, bottom: 10),
+        (eventDetails.rules.isEmpty)
+            ? const SizedBox()
+            : const Text("Rules",
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.white,
+                )).paddingForOnly(left: 16, top: 15, right: 5),
+        (eventDetails.rules.isEmpty)
+            ? const SizedBox()
+            : ListView.builder(
+                shrinkWrap: true,
+                physics: const ClampingScrollPhysics(),
+                itemCount: eventDetails.rules.length,
+                itemBuilder: (context, index) {
+                  return Text(eventDetails.rules[index],
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      )).paddingForOnly(left: 24, right: 24, bottom: 10);
+                }),
+        eventDetails.bots.isEmpty
+            ? const SizedBox()
+            : const Row(children: [
                 Text("Bots ",
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 24,
                       color: Colors.white,
                     )),
-              ]).paddingForOnly(left: 50, top: 15, right: 5),
-        ListView.builder(
-            shrinkWrap: true,
-            physics: ClampingScrollPhysics(),
-            itemCount: widget.eventDetails.bots.length,
-            itemBuilder: (context, index) {
-              return Text(widget.eventDetails.bots[index],
-                  style: TextStyle(
-                    fontSize: 20,
-                    color: Colors.white,
-                  )).paddingForOnly(left: 40, right: 40);
-            }),
+              ]).paddingForOnly(left: 16, top: 15, right: 5),
+        (eventDetails.bots.isEmpty)
+            ? const SizedBox()
+            : ListView.builder(
+                shrinkWrap: true,
+                physics: const ClampingScrollPhysics(),
+                itemCount: eventDetails.bots.length,
+                itemBuilder: (context, index) {
+                  return Text(eventDetails.bots[index],
+                      style: const TextStyle(
+                        fontSize: 18,
+                        color: Colors.white,
+                      )).paddingForOnly(left: 24, right: 24);
+                }),
         SizedBox(
           width: 300.0,
           height: 40.0,
@@ -185,7 +186,8 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => FormScreen()),
+                MaterialPageRoute(
+                    builder: (context) => FormScreen(event: eventDetails)),
               );
             },
             style: OutlinedButton.styleFrom(
@@ -195,17 +197,17 @@ class _SingleEventScreenState extends State<SingleEventScreen> {
                 )),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
-                'Registen now events',
+                'Register',
                 style: TextStyle(color: Colors.black, fontSize: 20),
-              ),
+              ).paddingForOnly(right: 10),
               Icon(
                 Icons.arrow_right_alt_sharp,
                 color: Colors.black,
               )
             ]),
           ),
-        ).paddingForOnly(top: 20),
-      ]).paddingForOnly(top: 10, bottom: 40),
+        ).paddingForOnly(top: 20, bottom: 40, left: 20, right: 20),
+      ]),
     );
   }
 }

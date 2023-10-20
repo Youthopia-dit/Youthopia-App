@@ -10,16 +10,20 @@ class FormInputWidget extends StatelessWidget {
       required this.validation,
       required this.errorText,
       this.obscureText = false,
+        this.initial,
+        this.disabled = false,
       this.suffix,
       required this.keyboard});
 
   final String fieldName;
+  final String? initial;
   final void Function(String) onChanged;
   final bool Function(String) validation;
   final String errorText;
   final TextInputType keyboard;
   final bool obscureText;
   final Widget? suffix;
+  final bool disabled;
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -35,9 +39,11 @@ class FormInputWidget extends StatelessWidget {
         TextFormField(
             obscureText: obscureText,
             keyboardType: keyboard,
+            initialValue: initial,
+            readOnly: disabled,
             onChanged: (value) => onChanged(value),
-            style: const TextStyle(
-              color: CustomColors.white,
+            style: TextStyle(
+              color: (disabled) ? CustomColors.Grey1 : CustomColors.white,
             ),
             validator: (value) {
               String name = value!.trim();

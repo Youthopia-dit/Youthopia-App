@@ -19,7 +19,6 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
   static final List<Widget> _list = <Widget>[
     const HomeScreen(),
     EventListScreen(eventList: Data.eventList,),
-    EventListScreen(type: "my", eventList: [],),
     const ProfileScreen()
   ];
 
@@ -67,10 +66,6 @@ class _CustomBottomNavigationBarState extends State<BottomNavbar> {
           BottomNavigationBarItem(
             icon: GlowIcon(Icons.event_available_rounded, glowColor: _selectedIndex == 1 ? CustomColors.glowBlue : null),
             label: 'Events',
-          ),
-          BottomNavigationBarItem(
-            icon: GlowIcon(Icons.event_sharp, glowColor: _selectedIndex == 2 ? CustomColors.glowBlue : null),
-            label: 'My Events',
           ),
           BottomNavigationBarItem(
             icon: GlowIcon(Icons.person_pin, glowColor: _selectedIndex == 4 ? CustomColors.glowBlue : null),
