@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:youthopia/data/data_instance.dart';
 import 'package:youthopia/data/models/event_model.dart';
 import 'package:youthopia/data/models/request_status.dart';
@@ -19,7 +20,7 @@ class _IndRegFormState extends State<IndRegForm> {
   String name = '';
   String id = '';
   String phone = '';
-
+  bool loading = false;
   @override
   void initState() {
     id = Data.user.participantIdentityNumber;
@@ -70,6 +71,12 @@ class _IndRegFormState extends State<IndRegForm> {
               .paddingForOnly(bottom: 20),
           OutlinedButton(
             onPressed: () async {
+              if(loading) {
+                return;
+              }
+              setState(() {
+                loading = true;
+              });
               if (formKey.currentState!.validate()) {
                 print(name);
                 Auth auth = Auth();
@@ -83,13 +90,19 @@ class _IndRegFormState extends State<IndRegForm> {
                   Navigator.pop(context);
                 }
               }
+              setState(() {
+                loading = false;
+              });
             },
             style: OutlinedButton.styleFrom(
                 backgroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
                 )),
-            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+            child: (loading) ? LoadingAnimationWidget.staggeredDotsWave(
+              color: CustomColors.black,
+              size: 20,
+            ) : Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               const Text(
                 'Register',
                 style: TextStyle(color: CustomColors.black, fontSize: 20),
