@@ -32,7 +32,7 @@ class TicketContainer extends StatelessWidget {
             fit: BoxFit.cover,
           ),
         ),
-        Text(ticket.event.eventName, style: TextStyle(
+        Text(ticket.event.eventName, style: const TextStyle(
           color: CustomColors.white,
           fontSize: 20
         ),)
