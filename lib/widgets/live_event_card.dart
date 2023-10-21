@@ -12,7 +12,6 @@ class LiveEventCard extends StatelessWidget {
     'Assets/Rectangle 1521 (1).png',
     'Assets/Rectangle 1521 (1).png',
   ];
-
   @override
   Widget build(BuildContext context) {
     return Stack(
