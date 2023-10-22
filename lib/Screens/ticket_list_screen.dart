@@ -53,14 +53,14 @@ class _TicketListScreenState extends State<TicketListScreen> {
             ? const CircularProgressIndicator().wrapCenter()
             : ListView.builder(
                 shrinkWrap: true,
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 itemCount: list.length,
                 itemBuilder: (context, index) {
                   return TicketContainer(
                     ticket: list[index]
                   ).paddingWithSymmetry(horizontal: 20, vertical: 10);
                 }),
-        SizedBox(height: 50,)
+        const SizedBox(height: 50,)
       ],
     ));
   }

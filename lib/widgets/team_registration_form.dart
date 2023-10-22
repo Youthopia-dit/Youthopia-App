@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:youthopia/data/models/event_model.dart';
 import 'package:youthopia/data/shared_preferences.dart';
 import 'package:youthopia/utils/colors.dart';
@@ -25,6 +26,7 @@ class _TeamRegFormState extends State<TeamRegForm> {
   late int max;
   late List<String> members;
   final formKey = GlobalKey<FormState>();
+  bool loading = false;
   @override
   void initState() {
     max = widget.details.participantMax;
@@ -35,6 +37,7 @@ class _TeamRegFormState extends State<TeamRegForm> {
     phone = Data.user.phonenumber;
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -63,15 +66,15 @@ class _TeamRegFormState extends State<TeamRegForm> {
                   keyboard: TextInputType.number)
               .paddingForOnly(bottom: 20),
           FormInputWidget(
-              fieldName: 'Leader\'s Phone Number',
-              initial: phone,
-              disabled: true,
-              onChanged: (value) {
-                phone = value;
-              },
-              validation: (value) => value.length != 10,
-              errorText: 'ID cannot be empty',
-              keyboard: TextInputType.number)
+                  fieldName: 'Leader\'s Phone Number',
+                  initial: phone,
+                  disabled: true,
+                  onChanged: (value) {
+                    phone = value;
+                  },
+                  validation: (value) => value.length != 10,
+                  errorText: 'ID cannot be empty',
+                  keyboard: TextInputType.number)
               .paddingForOnly(bottom: 20),
           const Text(
             'Team Size',
@@ -122,41 +125,65 @@ class _TeamRegFormState extends State<TeamRegForm> {
               }),
           OutlinedButton(
             onPressed: () async {
+              if (loading) {
+                return;
+              }
+              setState(() {
+                loading = true;
+              });
               if (formKey.currentState!.validate()) {
                 print(teamName);
                 List<String> M = [];
-                for(String mem in members) {
-                  if(mem != '') {
+                for (String mem in members) {
+                  if (mem != '') {
                     M.add(mem);
                   }
                 }
                 Auth auth = Auth();
-                final response = await auth.registerEvent(name: teamName, members: M, phone: phone, eventId: widget.details.eventId);
+                final response = await auth.registerEvent(
+                    name: teamName,
+                    members: M,
+                    phone: phone,
+                    eventId: widget.details.eventId);
                 print('Submitted');
-                if(response.status == RequestStatus.FAILURE) {
-                  ShowSnackBar.snack(context, title: 'Failure', message: 'Event Registration Failure', type: 'failure');
+                if (response.status == RequestStatus.FAILURE) {
+                  ShowSnackBar.snack(context,
+                      title: 'Failure',
+                      message: 'Event Registration Failure',
+                      type: 'failure');
                 } else {
-                  ShowSnackBar.snack(context, title: 'Success', message: 'Registration Success', type: 'success');
+                  ShowSnackBar.snack(context,
+                      title: 'Success',
+                      message: 'Registration Success',
+                      type: 'success');
                   Navigator.pop(context);
                   Navigator.pop(context);
                 }
               }
+              setState(() {
+                loading = false;
+              });
             },
             style: OutlinedButton.styleFrom(
                 backgroundColor: Colors.white,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18.0),
                 )),
-            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              const Text(
-                'Next',
-                style: TextStyle(color: CustomColors.black, fontSize: 20),
-              ).paddingForOnly(right: 10),
-              const Icon(
-                Icons.arrow_right_alt_sharp,
-                color: CustomColors.black,
-              )
-            ]),
+            child: (loading)
+                ? LoadingAnimationWidget.staggeredDotsWave(
+                    color: CustomColors.black,
+                    size: 20,
+                  )
+                : Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                    const Text(
+                      'Next',
+                      style: TextStyle(color: CustomColors.black, fontSize: 20),
+                    ).paddingForOnly(right: 10),
+                    const Icon(
+                      Icons.arrow_right_alt_sharp,
+                      color: CustomColors.black,
+                    )
+                  ]),
           ).paddingWithSymmetry(horizontal: 10, vertical: 20)
         ],
       ),

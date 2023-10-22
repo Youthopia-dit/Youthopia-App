@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:youthopia/data/backend.dart';
 import 'package:youthopia/data/models/request_status.dart';
 import 'package:youthopia/data/shared_preferences.dart';
@@ -238,7 +239,10 @@ class _SignUpScreen2State extends State<SignUpScreen2> {
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(18.0),
                                 )),
-                            child: (loading) ? CircularProgressIndicator() : Row(
+                            child: (loading) ? LoadingAnimationWidget.staggeredDotsWave(
+                              color: CustomColors.black,
+                              size: 20,
+                            ) : Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   const Text(
@@ -252,7 +256,7 @@ class _SignUpScreen2State extends State<SignUpScreen2> {
                                     color: CustomColors.black,
                                   )
                                 ]),
-                          ).paddingWithSymmetry(horizontal: 10, vertical: 20)
+                          ).wrapCenter().paddingWithSymmetry(horizontal: 10, vertical: 20)
                         ],
                       )).paddingWithSymmetry(horizontal: 20)
                 ],

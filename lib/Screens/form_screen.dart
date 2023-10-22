@@ -17,13 +17,14 @@ class FormScreen extends StatefulWidget {
 
 class _FormScreenState extends State<FormScreen> with TickerProviderStateMixin {
   late TabController tabController;
-
+  int disable = 0;
   @override
   void initState() {
 
     int max = widget.event.participantMax;
     int min = widget.event.participantMin;
     int initial = max <= 1 ? 1 : 0;
+    disable = initial == 1 ? 0 : 1;
     tabController = TabController(
       initialIndex: initial,
       length: 2,
@@ -40,6 +41,12 @@ class _FormScreenState extends State<FormScreen> with TickerProviderStateMixin {
           children: [
             const YouthopiaAppbar().paddingForOnly(top: 30, bottom: 10),
             TabBar(
+              onTap: (value) {
+                if ( (tabController.indexIsChanging ?? false) &&
+                    tabController.index == disable) {
+                  tabController.index = tabController.previousIndex ?? 1;
+                }
+              },
               controller: tabController,
               labelColor: CustomColors.glowBlue,
               unselectedLabelColor: CustomColors.white.withOpacity(0.3),

@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:email_validator/email_validator.dart';
 import 'package:flutter/material.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:youthopia/data/shared_preferences.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
@@ -16,7 +17,6 @@ import '../utils/colors.dart';
 import '../utils/snackbar.dart';
 import 'navigation_screen.dart';
 
-
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -26,8 +26,8 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final formKey = GlobalKey<FormState>();
-
-
+  bool loading = false;
+  bool passVisible = false;
   String email = '';
   String password = '';
 
@@ -35,7 +35,6 @@ class _LoginScreenState extends State<LoginScreen> {
     int minLength = 6;
     return password.length >= minLength;
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -59,8 +58,8 @@ class _LoginScreenState extends State<LoginScreen> {
                         onChanged: (value) {
                           email = value;
                         },
-                        validation: (value) => (!EmailValidator.validate(email) ||
-                            email.isEmpty),
+                        validation: (value) =>
+                            (!EmailValidator.validate(email) || email.isEmpty),
                         errorText: 'Enter Valid email',
                         keyboard: TextInputType.text,
                       ).paddingForOnly(bottom: 30),
@@ -69,6 +68,20 @@ class _LoginScreenState extends State<LoginScreen> {
                         onChanged: (value) {
                           password = value;
                         },
+                        obscureText: !passVisible,
+                        suffix: IconButton(
+                          onPressed: () {
+                            setState(() {
+                              passVisible = !passVisible;
+                            });
+                          },
+                          icon: Icon(
+                            !passVisible
+                                ? Icons.visibility
+                                : Icons.visibility_off,
+                            color: CustomColors.white,
+                          ),
+                        ),
                         validation: (value) =>
                             (password.isEmpty || !isPasswordValid(password)),
                         errorText: 'Enter password',
@@ -76,12 +89,18 @@ class _LoginScreenState extends State<LoginScreen> {
                       ).paddingForOnly(bottom: 30),
                       OutlinedButton(
                         onPressed: () async {
+                          if (loading) {
+                            return;
+                          }
+                          setState(() {
+                            loading = true;
+                          });
                           if (formKey.currentState!.validate()) {
                             print(password);
                             Auth auth = Auth();
-                            final response = await auth.login(email : email, password: password);
-                            if (response.status ==
-                                RequestStatus.SUCCESS) {
+                            final response = await auth.login(
+                                email: email, password: password);
+                            if (response.status == RequestStatus.SUCCESS) {
                               Data.user = response.body!;
                               ShowSnackBar.snack(context,
                                   title: 'Log in Success',
@@ -90,9 +109,8 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) =>
-                                          BottomNavbar()),
-                                      (route) => false);
+                                      builder: (context) => BottomNavbar()),
+                                  (route) => false);
                             } else {
                               ShowSnackBar.snack(context,
                                   title: 'An Error Occured',
@@ -101,26 +119,35 @@ class _LoginScreenState extends State<LoginScreen> {
                             }
                             print('Submitted');
                           }
+                          setState(() {
+                            loading = false;
+                          });
                         },
                         style: OutlinedButton.styleFrom(
                             backgroundColor: Colors.white,
                             shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(18.0),
                             )),
-                        child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                'Next',
-                                style: TextStyle(
-                                    color: CustomColors.black, fontSize: 20),
-                              ).paddingForOnly(right: 10),
-                              const Icon(
-                                Icons.arrow_right_alt_sharp,
+                        child: (loading)
+                            ? LoadingAnimationWidget.staggeredDotsWave(
                                 color: CustomColors.black,
+                                size: 20,
                               )
-                            ]),
-                      ).paddingWithSymmetry(horizontal: 10, vertical: 20)
+                            : Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                    const Text(
+                                      'Next',
+                                      style: TextStyle(
+                                          color: CustomColors.black,
+                                          fontSize: 20),
+                                    ).paddingForOnly(right: 10),
+                                    const Icon(
+                                      Icons.arrow_right_alt_sharp,
+                                      color: CustomColors.black,
+                                    )
+                                  ]),
+                      ).wrapCenter().paddingWithSymmetry(horizontal: 10, vertical: 20)
                     ],
                   )).paddingWithSymmetry(horizontal: 20)
             ],
