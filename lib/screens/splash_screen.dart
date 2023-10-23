@@ -40,18 +40,32 @@ class _SplashScreenState extends State<SplashScreen> {
     }
   }
 
+  Future<bool> getHomeData() async {
+    Api api = Api();
+    final response = await api.getHomeData();
+
+    if (response.status == RequestStatus.SUCCESS) {
+      Data.featured = response.body!.featuredEvents;
+      Data.carouselImages = response.body!.coverImages;
+      Data.sponsorImages = response.body!.sponsorImages;
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   void navigate() async {
     await Future.delayed(const Duration(seconds: 3));
-    if (await getEventsData()) {
+    if (await getEventsData() && await getHomeData()) {
       Auth auth = Auth();
       if (await auth.getToken() != null) {
         final response = await auth.getUserDetails();
-        if(response.status == RequestStatus.SUCCESS) {
+        if (response.status == RequestStatus.SUCCESS) {
           Data.user = response.body!;
           Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(builder: (context) => BottomNavbar()),
-                  (route) => false);
+              (route) => false);
         } else {
           ShowSnackBar.snack(context,
               title: 'An Error Occurred!',
@@ -59,12 +73,11 @@ class _SplashScreenState extends State<SplashScreen> {
               type: 'failure');
         }
         print('test');
-
       } else {
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(builder: (context) => CollegeScreen()),
-                (route) => false);
+            (route) => false);
       }
     }
   }

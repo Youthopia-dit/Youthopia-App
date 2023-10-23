@@ -153,11 +153,9 @@ class _TicketContainerState extends State<TicketContainer> {
                 side:
                     const BorderSide(color: CustomColors.glowBlue, width: 2)),
             onPressed: () => download(),
-            child: (loading) ? Expanded(
-              child: LoadingAnimationWidget.staggeredDotsWave(
-                color: CustomColors.glowBlue,
-                size: 20,
-              ),
+            child: (loading) ? LoadingAnimationWidget.staggeredDotsWave(
+              color: CustomColors.glowBlue,
+              size: 20,
             ) : Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [

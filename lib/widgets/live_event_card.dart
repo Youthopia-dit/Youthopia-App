@@ -1,34 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'package:youthopia/data/models/event_model.dart';
 import 'package:youthopia/utils/colors.dart';
+import 'package:youthopia/utils/common_utils.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 
+import 'cached_image.dart';
+
 class LiveEventCard extends StatelessWidget {
-  LiveEventCard({
-    super.key,
-  });
-  final List<String> imagePaths = [
-    'Assets/Rectangle 1521 (1).png',
-    'Assets/Rectangle 1521 (1).png',
-    'Assets/Rectangle 1521 (1).png',
-  ];
+  const LiveEventCard({super.key, required this.eventDetails});
+
+  final EventDetails eventDetails;
+
   @override
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        SizedBox(
-          width: 400,
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(20),
-            child: Image.asset(
-              'Assets/fake_image.png',
-              alignment: Alignment.center,
-              fit: BoxFit.cover,
-              color: CustomColors.black,
-            ),
-          ),
+        CachedImage(
+           imageUrl: eventDetails.poster,
         ),
-        const Positioned(
+        Positioned(
           top: 10,
           left: 10,
           child: Column(
@@ -36,13 +26,13 @@ class LiveEventCard extends StatelessWidget {
             children: [
               Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.access_time,
-                    color: Colors.white,
+                    color: CustomColors.white,
                   ),
                   Text(
-                    '12:00 AM',
-                    style: TextStyle(color: Colors.white),
+                    eventDetails.startTime,
+                    style: const TextStyle(color: CustomColors.white),
                   ),
                 ],
               ),
@@ -55,24 +45,24 @@ class LiveEventCard extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Row(
+              Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.calendar_today,
-                    color: Colors.white,
+                    color: CustomColors.white,
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 2,
                   ),
                   Text(
-                    'Date',
-                    style: TextStyle(color: Colors.white),
+                    CommonUtils.getDate(eventDetails.date),
+                    style: const TextStyle(color: CustomColors.white),
                   ),
                 ],
               ).paddingForOnly(bottom: 10),
-              const Text(
-                'Event Name',
-                style: TextStyle(color: Colors.white),
+              Text(
+                eventDetails.eventName,
+                style: const TextStyle(color: CustomColors.white, fontWeight: FontWeight.bold, fontSize: 18),
               ),
             ],
           ),

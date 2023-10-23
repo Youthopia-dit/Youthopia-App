@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:youthopia/screens/about_us_screen.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 
 class YouthopiaAppbar extends StatelessWidget {
@@ -9,9 +10,14 @@ class YouthopiaAppbar extends StatelessWidget {
     return AppBar(
       backgroundColor: Colors.transparent,
       centerTitle: true,
-      title: Image.asset(
-        'Assets/youthopia_logo.png',
-        width: 250,
+      title: GestureDetector(
+        onTap: () {
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const AboutUsScreen()));
+        },
+        child: Image.asset(
+          'Assets/youthopia_logo.png',
+          width: 250,
+        ),
       ),
     );
   }

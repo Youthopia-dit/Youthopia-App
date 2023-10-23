@@ -4,15 +4,12 @@ import 'package:youthopia/data/data_instance.dart';
 import 'package:youthopia/data/shared_preferences.dart';
 import 'package:youthopia/screens/college_screen.dart';
 import 'package:youthopia/screens/ticket_list_screen.dart';
-import 'package:youthopia/screens/ticket_screen.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/background_container.dart';
 import 'package:youthopia/widgets/profile_details.dart';
-import '../widgets/background_scaffold.dart';
 import '../widgets/star_container.dart';
 import '../widgets/youthopia_appbar.dart';
-import 'package:youthopia/screens/ticket_screen.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -25,23 +22,23 @@ class _ProfileScreenState extends State<ProfileScreen> {
   @override
   Widget build(BuildContext context) {
     print(Data.user.college);
-    // return const Placeholder();
     return BackgroundContainer(
       child: SingleChildScrollView(
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
-            YouthopiaAppbar().paddingForOnly(top: 40),
+            const YouthopiaAppbar().paddingForOnly(top: 40),
             StarContainer(
               child: Column(
                 children: [
                   Text(
                     Data.user.username,
-                    style: TextStyle(color: CustomColors.white, fontSize: 30),
+                    style: const TextStyle(color: CustomColors.white, fontSize: 24),
                   ).paddingForOnly(top: 20),
                   Text(
                     Data.user.email,
-                    style: TextStyle(color: CustomColors.white, fontSize: 20),
+                    overflow: TextOverflow.fade,
+                    style: const TextStyle(color: CustomColors.white, fontSize: 18),
                   ).paddingForOnly(top: 20, bottom: 20),
                   ProfileDetails(domain: "Mobile Number", value: Data.user.phonenumber),
                   ProfileDetails(domain: "year", value: Data.user.year),
@@ -54,14 +51,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>  TicketListScreen()));
+                                builder: (context) =>  const TicketListScreen()));
                       },
                       style: OutlinedButton.styleFrom(
                           backgroundColor: CustomColors.grey,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
                           )),
-                      child: Row(
+                      child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
@@ -83,7 +80,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => CollegeScreen()),
+                                builder: (context) => const CollegeScreen()),
                             (route) => false);
                       },
                       style: OutlinedButton.styleFrom(
@@ -91,7 +88,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(18.0),
                           )),
-                      child: Row(
+                      child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Icon(

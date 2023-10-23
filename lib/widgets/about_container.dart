@@ -30,7 +30,7 @@ class AboutContainer extends StatelessWidget {
                     fontSize: 20),
               ),
               Text(
-                '$branch and $year',
+                '$branch - $year Year',
                 style: TextStyle(
                     color: CustomColors.Grey1, fontSize: 17),
               ),

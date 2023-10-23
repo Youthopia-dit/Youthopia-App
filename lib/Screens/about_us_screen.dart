@@ -11,109 +11,112 @@ class AboutUsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BackgroundScaffold(
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(children: [
-          SizedBox(
-            width: MediaQuery.of(context).size.width,
-          ),
-          YouthopiaAppbar().paddingForOnly(top: 50),
-          Container(
-                  child: Image.asset('Assets/Group 6760.png')
-                      .paddingForOnly(top: 0))
-              .paddingForOnly(bottom: 10),
-          Container(
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(28),
-                color: Colors.black.withOpacity(0.8)),
-            child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const AboutHeading(
-                    title: 'Conveners',
-                    type: false,
-                  ),
-                  const AboutContainer(
-                    name: 'pragati',
-                    branch: 'btech cse',
-                    year: '2nd',
-                  ),
-                  const AboutContainer(
-                    name: 'vivan',
-                    branch: 'btech cse',
-                    year: '1nd',
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const AboutHeading(
-                    title: 'Designer team',
-                    type: false,
-                  ),
-                  const AboutContainer(
-                    name: 'vijan',
-                    branch: 'btech cse',
-                    year: '3nd',
-                  ),
-                  const AboutContainer(
-                    name: 'Garima',
-                    branch: 'btech cse',
-                    year: '2nd',
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const AboutHeading(
-                    title: 'Design Team Members',
-                    type: true,
-                  ),
-                  const AboutContainer(
-                    name: 'vijan',
-                    branch: 'btech cse',
-                    year: '3nd',
-                  ),
-                  const AboutContainer(
-                    name: 'Garima',
-                    branch: 'btech cse',
-                    year: '2nd',
-                  ),
-                  const AboutContainer(
-                    name: 'raju',
-                    branch: 'btech cse',
-                    year: '3nd',
-                  ),
-                  const AboutContainer(
-                    name: 'junkook',
-                    branch: 'btech cse',
-                    year: '2nd',
-                  ),
-                  Container(
-                    width: 300.0,
-                    height: 40.0,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      border: Border.all(
-                        color: CustomColors.white,
-                      ),
-                    ),
-                    child: OutlinedButton(
-                      onPressed: () {},
-                      style: OutlinedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            side: const BorderSide(color: CustomColors.black, width: 30.0),
-                            borderRadius: BorderRadius.circular(18.0),
-                          )),
-                      child: const Text(
-                        'Go Back to Login Page',
-                        style: TextStyle(color: CustomColors.white, fontSize: 16),
-                      ),
-                    ),
-                  ).paddingForOnly(top: 20),
-                ]).paddingWithSymmetry(horizontal: 20),
-          ),
-        ]),
-      ),
-    );
+        child: SingleChildScrollView(
+      physics: const BouncingScrollPhysics(),
+      child: Column(children: [
+        SizedBox(
+          width: MediaQuery.of(context).size.width,
+        ),
+        const YouthopiaAppbar().paddingForOnly(top: 50),
+        Container(
+                child:
+                    Image.asset('Assets/Group 6760.png').paddingForOnly(top: 0))
+            .paddingForOnly(bottom: 10),
+        Container(
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(28),
+              color: Colors.black.withOpacity(0.8)),
+          child: const Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AboutHeading(
+                  title: 'Development Team',
+                  type: false,
+                ),
+                AboutContainer(
+                  name: 'Vijayant Singh',
+                  branch: 'BTCSE',
+                  year: '3RD',
+                ),
+                AboutContainer(
+                  name: 'Pratik Singh',
+                  branch: 'BTCSE',
+                  year: '3RD',
+                ),
+                AboutContainer(
+                  name: 'Mudit Jain',
+                  branch: 'BTCSE',
+                  year: '3RD',
+                ),
+                AboutContainer(
+                  name: 'Amisha Tandon',
+                  branch: 'BTCSE',
+                  year: '3RD',
+                ),
+                AboutContainer(
+                  name: 'Garima Agrawal',
+                  branch: 'BTCSE',
+                  year: '2ND',
+                ),
+                AboutContainer(
+                  name: 'Shivangi Rajput',
+                  branch: 'BTCSE',
+                  year: '2ND',
+                ),
+                AboutContainer(
+                  name: 'Pragati Aggarwal',
+                  branch: 'BTCSE',
+                  year: '2ND',
+                ),
+                AboutContainer(
+                  name: 'Anushka Gupta',
+                  branch: 'BTCSE',
+                  year: '2ND',
+                ),
+                SizedBox(
+                  height: 20,
+                ),
+                AboutHeading(
+                  title: 'Design team',
+                  type: false,
+                ),
+                AboutContainer(
+                  name: 'Saumya Negi',
+                  branch: 'B. Des (UX)',
+                  year: '2ND',
+                ),
+                AboutContainer(
+                  name: 'Divya Dvivedy',
+                  branch: 'B. Des (UX)',
+                  year: '2ND',
+                ),
+                AboutContainer(
+                  name: 'Anshuman Shahi',
+                  branch: 'B. Des (UX)',
+                  year: '2ND',
+                ),
+                AboutContainer(
+                  name: 'Shristi Singhal',
+                  branch: 'B. Des (UX)',
+                  year: '2ND',
+                ),
+                AboutContainer(
+                  name: 'Mehvish Wani',
+                  branch: 'B. Des (UX)',
+                  year: '2ND',
+                ),
+                AboutContainer(
+                  name: 'Ayush Goswami',
+                  branch: 'B. Des (UX)',
+                  year: '2ND',
+                ),
+                SizedBox(
+                  height: 20,
+                )
+              ]).paddingWithSymmetry(horizontal: 20, vertical: 4),
+        )
+      ]),
+    ));
   }
 }

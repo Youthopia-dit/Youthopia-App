@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:youthopia/Screens/form_screen.dart';
 import 'package:youthopia/data/models/event_model.dart';
 import 'package:youthopia/utils/colors.dart';
@@ -183,12 +184,17 @@ class SingleEventScreen extends StatelessWidget {
           width: 300.0,
           height: 40.0,
           child: OutlinedButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => FormScreen(event: eventDetails)),
-              );
+            onPressed: () async {
+              if(eventDetails.form != null) {
+                final uri = Uri.parse(eventDetails.form!);
+                await launchUrl(uri, mode: LaunchMode.externalApplication);
+              } else {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => FormScreen(event: eventDetails)),
+                );
+              }
             },
             style: OutlinedButton.styleFrom(
                 backgroundColor: Colors.white,
@@ -196,11 +202,11 @@ class SingleEventScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(18.0),
                 )),
             child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-              Text(
+              const Text(
                 'Register',
                 style: TextStyle(color: Colors.black, fontSize: 20),
               ).paddingForOnly(right: 10),
-              Icon(
+              const Icon(
                 Icons.arrow_right_alt_sharp,
                 color: Colors.black,
               )
