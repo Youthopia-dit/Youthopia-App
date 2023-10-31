@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart';
 import 'package:youthopia/data/models/event_model.dart';
+import 'package:youthopia/data/models/home_details.dart';
 import 'package:youthopia/data/models/request_status.dart';
 import 'package:youthopia/data/models/user_model.dart';
 
@@ -50,8 +51,6 @@ class Api {
         "Authorization": "Bearer $token"
       };
       final response = await http.get(url, headers: header);
-      print(response.body);
-      print(response.statusCode);
       final res = jsonDecode(response.body);
       if (response.statusCode == 200) {
         List<TicketDetails> list = [];
@@ -92,8 +91,6 @@ class Api {
         "Authorization": "Bearer $token"
       };
       final response = await http.get(url, headers: header);
-      print(response.body);
-      print(response.statusCode);
       final res = jsonDecode(response.body);
       if (response.statusCode == 200) {
         return RequestStatus(
@@ -117,7 +114,6 @@ class Api {
       required List<String> members,
       required String phone,
       required String eventId}) async {
-    print('test');
     final url = Uri.https(baseUrl, '/user/registeruser');
     final header = {
       "Content-Type": "application/json",
@@ -130,11 +126,8 @@ class Api {
       "eventID": eventId
     };
     try {
-      print(body);
       final response = await http.post(url,
           headers: header, body: jsonEncode({"data": body}));
-      print(response.body);
-      print(response.statusCode);
       final res = jsonDecode(response.body);
       if (response.statusCode == 200) {
         return RequestStatus(
@@ -207,6 +200,28 @@ class Api {
           eventList.add(EventDetails.fromMap(element));
         }
         return RequestStatus(status: RequestStatus.SUCCESS, body: eventList);
+      } else {
+        return RequestStatus(
+            status: RequestStatus.FAILURE,
+            message: 'Some Error Occured!. Please Try again Later!!');
+      }
+    } on Exception catch (e) {
+      debugPrint(e.toString());
+      return RequestStatus(
+          status: RequestStatus.FAILURE,
+          message: 'Some Error Occured!. Please Try again Later!!');
+    }
+  }
+
+  Future<RequestStatus<HomeDetails?>> getHomeData() async {
+    final url = Uri.https(baseUrl, '/sponsor/getlandingpagedetails');
+    try {
+      final response = await http.get(url);
+      print(response.body);
+      print(response.statusCode);
+      final res = jsonDecode(response.body);
+      if (response.statusCode == 200) {
+        return RequestStatus(status: RequestStatus.SUCCESS, body: HomeDetails.fromMap(res['details'][0]));
       } else {
         return RequestStatus(
             status: RequestStatus.FAILURE,

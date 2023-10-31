@@ -45,7 +45,7 @@ class CollegeScreen extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const Text(
-                              'Log in to your Account',
+                              'Log in',
                               style: TextStyle(
                                   color: CustomColors.black, fontSize: 20),
                             ).paddingForOnly(right: 10),

@@ -17,6 +17,7 @@ class EventDetails {
   final String clubName;
   final String category;
   final String eventId;
+  final String? form;
 
   EventDetails(
       {required this.coordinators,
@@ -36,6 +37,7 @@ class EventDetails {
       required this.overallHead,
       required this.participantMax,
       required this.participantMin,
+      this.form,
       required this.category});
 
   factory EventDetails.fromMap(Map<String, dynamic> map) {
@@ -51,7 +53,6 @@ class EventDetails {
     for (String r in map['rules']) {
       rules.add(r);
     }
-    print(map);
     for (String b in map['bots']) {
       bots.add(b);
     }
@@ -69,11 +70,12 @@ class EventDetails {
       startTime: map['start_time'],
       endTime: map['end_time'],
       bots: bots,
-      participantMin: map['participant_min'] ,
-      participantMax: map['participant_max'] ,
+      participantMin: map['participant_min'],
+      participantMax: map['participant_max'],
       eventId: map['event_id'],
       clubName: map['club_name'],
       category: map['category'],
+      form: map['forms']
     );
   }
 }
