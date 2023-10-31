@@ -92,17 +92,7 @@ class AboutUsScreen extends StatelessWidget {
                   year: '2ND',
                 ),
                 AboutContainer(
-                  name: 'Anshuman Shahi',
-                  branch: 'B. Des (UX)',
-                  year: '2ND',
-                ),
-                AboutContainer(
                   name: 'Shristi Singhal',
-                  branch: 'B. Des (UX)',
-                  year: '2ND',
-                ),
-                AboutContainer(
-                  name: 'Mehvish Wani',
                   branch: 'B. Des (UX)',
                   year: '2ND',
                 ),
