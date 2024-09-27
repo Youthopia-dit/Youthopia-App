@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
 import 'package:youthopia/widgets/about_container.dart';
 import 'package:youthopia/widgets/background_scaffold.dart';

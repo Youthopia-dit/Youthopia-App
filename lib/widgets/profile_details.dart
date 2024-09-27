@@ -17,7 +17,7 @@ class _ProfileDetailsState extends State<ProfileDetails> {
     return  Container(
       width: MediaQuery.of(context).size.width-70,
 
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           border: Border(
               bottom: BorderSide(width: 2,color: CustomColors.white)
           )
@@ -28,12 +28,12 @@ class _ProfileDetailsState extends State<ProfileDetails> {
         children: [
           Text(
             widget.domain,
-            style: TextStyle(fontSize: 15, color: CustomColors.white ),
+            style: const TextStyle(fontSize: 15, color: CustomColors.white ),
           ).paddingForOnly(top: 10,left: 5),
 
           Text(
             widget.value,
-            style: TextStyle(fontSize: 20, color: CustomColors.white),
+            style: const TextStyle(fontSize: 20, color: CustomColors.white),
           ).paddingForOnly(top: 10,left: 10,bottom: 10),
 
           // Image.asset('Assets/Rectangle.png',)

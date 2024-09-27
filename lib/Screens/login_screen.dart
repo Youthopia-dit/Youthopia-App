@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 40),
+                      const SizedBox(height: 40),
                       FormInputWidget(
                         fieldName: 'Email',
                         onChanged: (value) {
@@ -109,7 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               Navigator.pushAndRemoveUntil(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => BottomNavbar()),
+                                      builder: (context) => const BottomNavbar()),
                                   (route) => false);
                             } else {
                               ShowSnackBar.snack(context,

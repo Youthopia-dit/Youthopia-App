@@ -24,14 +24,14 @@ class AboutContainer extends StatelessWidget {
             children: <Widget>[
               Text(
                 name,
-                style: TextStyle(
+                style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     color: CustomColors.white,
                     fontSize: 20),
               ),
               Text(
                 '$branch - $year Year',
-                style: TextStyle(
+                style: const TextStyle(
                     color: CustomColors.Grey1, fontSize: 17),
               ),
             ]).paddingForOnly(left: 15, top: 10, bottom: 10)).paddingWithSymmetry(vertical: 5);

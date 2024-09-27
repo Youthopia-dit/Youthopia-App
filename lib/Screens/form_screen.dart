@@ -9,7 +9,7 @@ import 'package:youthopia/widgets/youthopia_appbar.dart';
 import '../utils/colors.dart';
 
 class FormScreen extends StatefulWidget {
-  const FormScreen({Key? key, required this.event}) : super(key: key);
+  const FormScreen({super.key, required this.event});
   final EventDetails event;
   @override
   State<FormScreen> createState() => _FormScreenState();

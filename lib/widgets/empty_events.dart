@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:youthopia/Screens/form_screen.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/widget_extensions.dart';
-import 'package:youthopia/widgets/form_input_widget.dart';
 
 class EmptyEventScreen extends StatelessWidget {
   const EmptyEventScreen({super.key});

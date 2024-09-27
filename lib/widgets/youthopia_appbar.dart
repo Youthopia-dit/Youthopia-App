@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:youthopia/screens/about_us_screen.dart';
-import 'package:youthopia/utils/widget_extensions.dart';
 
 class YouthopiaAppbar extends StatelessWidget {
   const YouthopiaAppbar({super.key});

@@ -79,10 +79,10 @@ class _SignUpScreen2State extends State<SignUpScreen2> {
                               ),
                               Checkbox(
                                   fillColor:
-                                      MaterialStateProperty.resolveWith<Color>(
-                                          (Set<MaterialState> states) {
+                                      WidgetStateProperty.resolveWith<Color>(
+                                          (Set<WidgetState> states) {
                                     if (!states
-                                        .contains(MaterialState.selected)) {
+                                        .contains(WidgetState.selected)) {
                                       return CustomColors.white
                                           .withOpacity(.32);
                                     }
@@ -119,7 +119,7 @@ class _SignUpScreen2State extends State<SignUpScreen2> {
                           ).paddingForOnly(bottom: 30),
                           FormInputWidget(
                             suffix: (collegeDit)
-                                ? SizedBox()
+                                ? const SizedBox()
                                 : IconButton(
                                     onPressed: () async {
                                       try {
@@ -171,9 +171,9 @@ class _SignUpScreen2State extends State<SignUpScreen2> {
                           (image != null)
                               ? Text(
                                   image!.path,
-                                  style: TextStyle(color: CustomColors.white),
+                                  style: const TextStyle(color: CustomColors.white),
                                 )
-                              : SizedBox(),
+                              : const SizedBox(),
                           FormInputWidget(
                             fieldName: 'Branch',
                             onChanged: (value) {
@@ -220,7 +220,7 @@ class _SignUpScreen2State extends State<SignUpScreen2> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                BottomNavbar()),
+                                                const BottomNavbar()),
                                         (route) => false);
                                   } else {
                                     ShowSnackBar.snack(context,

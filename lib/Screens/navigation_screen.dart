@@ -7,7 +7,7 @@ import 'package:youthopia/utils/colors.dart';
 import 'event_list_screen.dart';
 
 class BottomNavbar extends StatefulWidget {
-  const BottomNavbar({Key? key}) : super(key: key);
+  const BottomNavbar({super.key});
 
   @override
   State<BottomNavbar> createState() => _CustomBottomNavigationBarState();

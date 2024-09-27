@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:youthopia/data/models/event_model.dart';
+import 'package:youthopia/data/models/even
+t_model.dart';
 import 'package:youthopia/utils/colors.dart';
 import 'package:youthopia/utils/common_utils.dart';
 import 'package:youthopia/utils/widget_extensions.dart';

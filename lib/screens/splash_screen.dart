@@ -64,7 +64,7 @@ class _SplashScreenState extends State<SplashScreen> {
           Data.user = response.body!;
           Navigator.pushAndRemoveUntil(
               context,
-              MaterialPageRoute(builder: (context) => BottomNavbar()),
+              MaterialPageRoute(builder: (context) => const BottomNavbar()),
               (route) => false);
         } else {
           ShowSnackBar.snack(context,
@@ -76,7 +76,7 @@ class _SplashScreenState extends State<SplashScreen> {
       } else {
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(builder: (context) => CollegeScreen()),
+            MaterialPageRoute(builder: (context) => const CollegeScreen()),
             (route) => false);
       }
     }
